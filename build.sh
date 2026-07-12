@@ -20,6 +20,9 @@ if [ -f "$BASENAME.log" ]; then
     grep -E "Warning|Error|undefined|Reference" "$BASENAME.log" || echo "(no warnings, errors, or undefined references)"
 fi
 
+PDFDIR="pdfs"
+mkdir -p "$PDFDIR"
+
 echo "Cleaning up auxiliary files..."
 for f in "$BASENAME".*; do
     case "$f" in
@@ -28,4 +31,6 @@ for f in "$BASENAME".*; do
     esac
 done
 
-echo "Build complete: $(pwd)/$BASENAME.pdf"
+mv "$BASENAME.pdf" "$PDFDIR/"
+
+echo "Build complete: $(pwd)/$PDFDIR/$BASENAME.pdf"
