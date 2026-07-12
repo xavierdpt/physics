@@ -1,0 +1,389 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\newcommand{\ket}[1]{|#1\rangle}
+
+\geometry{margin=1in}
+
+\title{Scalar Quantum Field Theory on the Lightlike Graph:\\
+What the Simplest Possible Field Looks Like\\
+When Spacetime Has Been Discarded}
+\input{author}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Quantum field theory, in its most elementary form, is the theory of a single real scalar field $\phi(x)$ --- a number assigned to every point $x$ of spacetime --- and a Lagrangian density $\mathcal{L}[\phi, \partial\phi]$ built from it. The picture is intuitive: a field is a height-map over a fixed landscape, and excitations are bumps that move on it. The intuition weakens in general relativity, where the landscape is curved and the height-map stands on a dynamic geometry whose own excitations are governed by a different field. We project the scalar-field picture onto the lightlike graph $\mathcal{G}$ developed in the companion papers, in which spacetime has been discarded and the only primitive is the lightlike relation between emission and absorption events. The result is, on first inspection, very unintuitive: there is no landscape to stand on, no point $x$ to evaluate $\phi$ at, and no derivative to feed into $\mathcal{L}$. We propose three strategies for dealing with this unintuitiveness --- re-reading the field as a labelling of the corpus of photon edges, re-reading excitations as differences between successive graphs in the article-3 sequence, and re-reading selection rules as admissible-graph constraints --- and find that, while the questions the conventional scalar QFT asks are not all answerable in the photon-frame setting, the \emph{clarifying} work that the lightlike graph does for simpler puzzles transfers directly. The scalar field on $\mathcal{G}$ is not a different theory; it is the same theory with a different vocabulary, and the untranslatable residue is, once again, the dynamical content (vacuum energy, renormalisation, symmetry breaking) rather than the bookkeeping of which field value sits where.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+In the eight papers of this series we have progressively restricted the vocabulary of theoretical physics. The most aggressive move was to discard every frame of reference other than the photon frame, and along with it to discard coordinates, the metric, and proper time. What remained was the lightlike graph $\mathcal{G} = (V, E)$, a combinatorial object whose vertices are emission and absorption events and whose edges are photon worldlines. We applied this object to Bell's theorem, the measurement problem, the black-hole information paradox, the Schr\"odinger--spacetime mismatch, an audit of string theory, the bookkeeping of source-tagged photon edges, the delayed-choice quantum eraser, and time crystals. In every case the photon-frame restriction did not resolve the puzzle, but it did narrow the question to a combinatorial one.
+
+We now turn to quantum field theory. The setting is the most ambitious of the series. QFT brings together the apparatus of classical field theory (a continuum of values across spacetime, derivatives, Euler--Lagrange equations, Green's functions) with the apparatus of quantum mechanics (operators, states, creation and annihilation, second quantisation). Our task is the same one we have set ourselves in every paper of the series: project the object of study onto the lightlike graph and ask whether the projection clarifies, resolves, or fails to engage. We will find that the projection clarifies in some places, fails in others, and that the failure is illuminating.
+
+To keep the discussion within reach, the task description specifies that we reduce QFT to its simplest case: \emph{everything is, for the moment, a real scalar field of numbers}. A single scalar field $\phi(x)$, taking real values at every spacetime point $x$, governed by a single Lagrangian density $\mathcal{L}[\phi, \partial_\mu \phi]$. The picture is suggestive of a number-valued height-map across spacetime --- and this picture, in turn, transports across three regimes with declining intuition:
+\begin{enumerate}
+    \item \emph{Non-relativistic space}: a fixed flat background, a Cartesian coordinate system, a height-map that one can draw. Most intuitive.
+    \item \emph{Curved spacetime}: the background is dynamic, coupled to matter through Einstein's equations, and the height-map sits on a moving landscape. Less intuitive.
+    \item \emph{Lightlike graph}: there is no landscape at all, only emission and absorption events. Very unintuitive, and the subject of this paper.
+\end{enumerate}
+The task asks: \emph{how can we deal with the third regime?} The rest of the paper is a partial answer.
+
+The plan is as follows. Section~\ref{sec:classical} recalls the classical scalar field setup, as a height-map on spacetime. Section~\ref{sec:qft} recalls the standard quantisation: the field becomes an operator-valued distribution, the modes decompose into ladders, and the vacuum is the ground state of the corresponding Hamiltonian. Section~\ref{sec:flat} notes that on flat spacetime the picture is intuitive; Section~\ref{sec:curved} recalls that on curved spacetime the picture requires care; and Section~\ref{sec:graph} projects the picture onto the bare lightlike graph and confronts the unintuitiveness head-on. Section~\ref{sec:labelling} introduces a \emph{field labelling}: each photon edge receives a number from the field. Section~\ref{sec:dynamics} reads the field dynamics as a transition rule on the corpus. Section~\ref{sec:examples} runs three textbook constructions --- a free scalar, a $\phi^4$ interaction, spontaneous symmetry breaking --- on the lightlike graph. Section~\ref{sec:deal} collects strategies for dealing with the unintuitiveness. Section~\ref{sec:limits} registers what the projection cannot do. Section~\ref{sec:conclusion} summarises.
+
+\section{The Scalar Field, Classically}
+\label{sec:classical}
+
+\subsection{A Height-Map on Spacetime}
+
+The classical scalar field is the simplest object in field theory: a function
+\[
+\phi \;:\; M \;\to\; \mathbb{R},
+\]
+assigning a real number to every point of spacetime $M$. (``Real'' here is a simplifying assumption; complex scalar fields are obtained by allowing $\phi$ to take values in $\mathbb{C}$, and the same considerations apply with minor modifications.) In flat (3+1)-dimensional Minkowski space, the field is a function $\phi(t, \vec{x})$ of one time coordinate and three spatial ones. The visual image is suggestive: a height-map across an infinite plane, with one extra axis (time) that the height-map oscillates along.
+
+\subsection{The Lagrangian Density}
+
+The dynamics of the field is encoded in the Lagrangian density
+\begin{equation}
+\mathcal{L} \;=\; \tfrac{1}{2}\, \partial_\mu \phi \,\partial^\mu \phi \;-\; \tfrac{1}{2}\, m^2 \phi^2 \;-\; V(\phi),
+\label{eq:lagrangian}
+\end{equation}
+a function of $\phi$ and its first derivatives $\partial_\mu \phi = \partial \phi / \partial x^\mu$. The first term is a kinetic term, the second a mass term (with $m$ the mass of the field's quantum excitations), and $V(\phi)$ a self-interaction potential (e.g.~$V(\phi) = \lambda \phi^4 / 4!$ for a $\phi^4$ interaction). The Lagrangian density is the integrand of the action
+\begin{equation}
+S[\phi] \;=\; \int_M \mathcal{L}\, d^4x,
+\label{eq:action}
+\end{equation}
+and the Euler--Lagrange equation,
+\begin{equation}
+\partial_\mu \partial^\mu \phi \;+\; m^2 \phi \;+\; V'(\phi) \;=\; 0,
+\label{eq:el}
+\end{equation}
+is the equation of motion. This is the Klein--Gordon equation, generalised, for a self-interacting scalar field. Its solutions are the classical field configurations.
+
+\subsection{Energy and Momentum}
+
+The Hamiltonian, obtained by Legendre transform of the Lagrangian, is
+\begin{equation}
+H \;=\; \int_\Sigma \left[\tfrac{1}{2}\, \pi^2 \;+\; \tfrac{1}{2}\, (\nabla \phi)^2 \;+\; \tfrac{1}{2}\, m^2 \phi^2 \;+\; V(\phi) \right] d^3x,
+\label{eq:hamiltonian}
+\end{equation}
+where $\pi = \partial \mathcal{L} / \partial \dot \phi$ is the canonical momentum conjugate to $\phi$, and $\nabla \phi$ is the spatial part of the gradient. Both $H$ and the momentum $P$ generate the corresponding time and space translations of the field.
+
+The reason to recall this is that every term in~\eqref{eq:lagrangian} and~\eqref{eq:hamiltonian} involves either the value $\phi(x)$ at a point $x$ or the derivative $\partial_\mu \phi$ at a point $x$. Both concepts presuppose a continuum of points.
+
+\section{Scalar Quantum Field Theory: A Recapitulation}
+\label{sec:qft}
+
+\subsection{The Field as an Operator-Valued Distribution}
+
+In the passage from classical to quantum field theory, the field $\phi(x)$ is promoted to an operator $\hat{\phi}(x)$ on a Fock space. The canonical quantisation rule $\{\pi(x), \phi(y)\} = \delta^{(3)}(\vec{x} - \vec{y})$ (with $\pi$ the conjugate momentum) replaces the canonical Poisson bracket of the classical theory. The resulting theory is more elaborate than classical field theory, but the underlying object --- a field $\phi$ taking a value at every point --- is the same.
+
+\subsection{The Mode Decomposition}
+
+On flat spacetime, the field admits a Fourier decomposition into modes of definite four-momentum $k^\mu = (\omega_k, \vec{k})$,
+\begin{equation}
+\hat{\phi}(x) \;=\; \int \frac{d^3k}{(2\pi)^3}\,\frac{1}{\sqrt{2\omega_k}}\,
+\left[ \hat{a}_k\, e^{-i k \cdot x} \;+\; \hat{a}_k^\dagger\, e^{i k \cdot x} \right],
+\label{eq:mode}
+\end{equation}
+where $\hat{a}_k$ and $\hat{a}_k^\dagger$ are annihilation and creation operators for a quantum of four-momentum $k^\mu$, and $\omega_k = \sqrt{\vec{k}^2 + m^2}$. The vacuum $\ket{0}$ is the state annihilated by all $\hat{a}_k$, and a one-particle state $\hat{a}_k^\dagger \ket{0}$ is a particle of definite momentum and energy.
+
+\subsection{Time-Ordered Correlation Functions}
+
+The observables of perturbative QFT are $n$-point correlation functions
+\begin{equation}
+\langle 0 |\, T \hat{\phi}(x_1) \hat{\phi}(x_2) \cdots \hat{\phi}(x_n)\, | 0 \rangle,
+\label{eq:correlation}
+\end{equation}
+which are evaluated using Wick's theorem and expressed in terms of Feynman diagrams. The diagrams are pictures of particle exchanges, and the diagrammatic rules encode the dynamics encoded in $V(\phi)$. QFT is, in this sense, both algebraic (the operator algebra) and combinatorial (the diagrammatic rules).
+
+The two pictures are not independent: the mode decomposition~\eqref{eq:mode} presupposes a continuum of points $x$, and the Feynman-diagram picture presupposes a notion of locality that is expressed using those points. Question: what survives the photon-frame restriction, in which there are no points?
+
+\section{Flat Spacetime: Intuitive}
+\label{sec:flat}
+
+On flat Minkowski spacetime, the scalar field picture is at its most intuitive. There is a fixed coordinate system $(t, \vec{x})$, and the field $\phi(t, \vec{x})$ is a real-valued function on this coordinate system. The classical field configurations can be plotted as height-maps across a plane (with a time axis). The quantum field is the same height-map, now interpreted as an operator-valued distribution. The vacuum is the configuration with the lowest energy; excited states are height-maps with bumps and troughs.
+
+Three features make the picture intuitive on flat spacetime:
+\begin{enumerate}
+    \item \emph{Continuous background}. The field is defined at every $(t, \vec{x})$, and the limit-point intuition works. There is no question of how many points the field has.
+    \item \emph{Decoupled time}. The parameter $t$ and the coordinates $\vec{x}$ are independent variables, and field values at different $t$'s are sharply distinguishable.
+    \item \emph{Momentum as a parameter}. The Fourier decomposition into modes of definite $k^\mu$ is unambiguous, and the mass-shell condition $\omega_k = \sqrt{\vec{k}^2 + m^2}$ is a clean relation.
+\end{enumerate}
+The textbook physics (free propagation, scattering amplitudes, Feynman diagrams) lives comfortably on this picture. The reader sees the height-map oscillate, oscillates along with it, and has the impression of understanding the dynamics.
+
+\section{Curved Spacetime: Less Intuitive}
+\label{sec:curved}
+
+\subsection{General Covariance}
+
+On a general Lorentzian manifold $(M, g_{\mu\nu})$ with metric governed by
+\begin{equation}
+G_{\mu\nu} + \Lambda g_{\mu\nu} \;=\; \frac{8 \pi G}{c^4} T_{\mu\nu},
+\label{eq:efe}
+\end{equation}
+the scalar-field Lagrangian density becomes
+\begin{equation}
+\mathcal{L} \;=\; \tfrac{1}{2}\, g^{\mu\nu}\, \partial_\mu \phi\, \partial_\nu \phi \;-\; \tfrac{1}{2}\, m^2 \phi^2 \;-\; V(\phi),
+\label{eq:lagrangian-curved}
+\end{equation}
+with $\sqrt{-g}\, d^4 x$ as the measure of integration. The Euler--Lagrange equation gains a term
+\begin{equation}
+\frac{1}{\sqrt{-g}}\partial_\mu(\sqrt{-g}\, g^{\mu\nu}\, \partial_\nu \phi) \;+\; m^2 \phi \;+\; V'(\phi) \;=\; 0,
+\label{eq:el-curved}
+\end{equation}
+which is the covariant generalisation of~\eqref{eq:el}.
+
+\subsection{What is Lost and What is Gained}
+
+Three things happen that complicate the intuitive picture.
+\begin{itemize}
+    \item \emph{No global inertial frame}. There is no background coordinate system in which $\phi(t, \vec{x})$ varies on a flat plane. The field varies on a curved manifold.
+    \item \emph{No global notion of simultaneity}. Without a global timelike Killing vector, the field cannot be decomposed globally into modes of definite $\omega$. Local mode decompositions are possible but cannot be cleanly patched.
+    \item \emph{Coupling to geometry}. The metric is dynamic, and the scalar field's stress-energy tensor
+    \[
+    T_{\mu\nu} \;=\; \partial_\mu \phi\, \partial_\nu \phi \;-\; g_{\mu\nu}\,\mathcal{L}
+    \]
+    feeds back into Einstein's equations. The ``landscape'' is no longer a fixed landscape; it is a dynamical landscape, and the height-map perturbs it.
+\end{itemize}
+The textbook answers (Bogoliubov transformations on cosmological spacetimes, Unruh effect on Rindler wedges, particle creation in expanding universes) are technically well-developed but conceptually less transparent than the flat-space answers. The intuition weakens: the height-map is now a height-map on a moving landscape, and the bumps on the height-map disturb the landscape, which disturbs the height-map, and so on.
+
+\section{The Lightlike Graph: Unintuitive}
+\label{sec:graph}
+
+\subsection{What is Gone}
+
+The photon-frame restriction discards:
+\begin{itemize}
+    \item Coordinates $(t, \vec{x})$ in any inertial frame.
+    \item The metric $g_{\mu\nu}$ in any form.
+    \item Proper time, the connection between emission and absorption, and any notion of distance other than the lightlike separation $s^2 = 0$.
+    \item The notion of a continuum of points on which a field could be defined.
+\end{itemize}
+What remains is the lightlike graph $\mathcal{G} = (V, E)$: a discrete set $V$ of emission/absorption events, a set $E$ of directed photon edges, and the canonical combinatorial data (in-degrees, out-degrees, subgraphs).
+
+\subsection{What Becomes of the Field}
+
+On the bare graph, there is no point $x$ at which to evaluate $\phi(x)$. The question of whether the field takes a value at this event or that event has no formulation in the theory, because the theory has no notion of ``value at an event''. We are not just missing information; we are missing the structure on which the information could be defined.
+
+This is the source of the unintuitiveness. On flat spacetime, the field is a height-map across a clearly visible landscape, and intuition is supplied by the landscape. On curved spacetime, the landscape curves and moves, but is still a landscape. On the lightlike graph, the landscape is gone; there is nothing to be a height-map across. To reason about the field at all, we must supply a substitute.
+
+\section{A Field Labelling on the Lightlike Graph}
+\label{sec:labelling}
+
+\subsection{Strategy 1: A Per-Edge Numerical Labelling}
+
+The most natural substitute is to attach a number to every photon edge. We introduce a \emph{field labelling}
+\[
+\varphi \;:\; E \;\to\; \mathbb{R},
+\]
+assigning a real number to every photon in the corpus. The labelled graph is then
+\[
+\widehat{\mathcal{G}} \;=\; (V, E, \varphi),
+\]
+extending the bookkeeping vocabulary of article~5 with a new labelling.
+
+The labelling $\varphi$ is projectable: it is a map on a set of edges defined without coordinates, metric, or proper time. Whether it is productive is a separate question, to which we return in Section~\ref{sec:examples}.
+
+\subsection{Strategy 2: A Per-Vertex Numerical Labelling}
+
+A second strategy attaches a number to every vertex rather than to every edge. The labelling
+\[
+\psi \;:\; V \;\to\; \mathbb{R}
+\]
+records the value of the field at the emission or absorption event. The two labellings are not equivalent: an edge labelling corresponds to a single quantum of the field (a particle), whereas a vertex labelling corresponds to a region of spacetime at which the field values agree. We will use the edge labelling as the principal vocabulary, because it corresponds better to the particle interpretation of the field.
+
+\subsection{Strategy 3: A Transition Rule Between Successive Graphs}
+
+A third strategy uses the article-3 sequence of graphs
+\begin{equation}
+\mathcal{G}_0 \;\to\; \mathcal{G}_1 \;\to\; \mathcal{G}_2 \;\to\; \cdots
+\label{eq:graph-walk}
+\end{equation}
+to encode the dynamics. The field configuration at step $n$ is the field labelling $\varphi_n$ on $\mathcal{G}_n$, and the dynamics is a transition rule
+\[
+\varphi_n \;\to\; \varphi_{n+1}
+\]
+governed by the equation of motion. This strategy is the most ambitious: it tries to read the Euler--Lagrange equation~\eqref{eq:el} as a local transition rule between successive field labels.
+
+\subsection{What the Strategies Have in Common}
+
+The three strategies share one feature: \emph{they all reduce the scalar field to a labelling of the graph}. The labelled graph
+\[
+\widehat{\mathcal{G}} \;=\; (V, E, \varphi)
+\]
+becomes the natural setting in which to ask the standard QFT questions: what is the vacuum configuration, what are the excitations, what correlations are observed.
+
+\section{Field Dynamics as Transition Rules}
+\label{sec:dynamics}
+
+\subsection{Equation of Motion as Constraint on Edges}
+
+The Euler--Lagrange equation~\eqref{eq:el} is, on the bare graph, a constraint on the labelling $\varphi$ of the edges incident at any given vertex. The classical equation is local: $\partial_\mu \partial^\mu \phi + m^2 \phi + V'(\phi) = 0$ at each spacetime point. Under the photon-frame restriction the spacetime point loses its meaning, but the locality can be reformulated as a constraint on what the labelling does at a vertex.
+
+Concretely, suppose two photon edges $e_1$ and $e_2$ meet at a vertex $v \in V$, with edge labels $\varphi(e_1)$ and $\varphi(e_2)$. The classical equation, after the photon-frame restriction, becomes a combinatorial relation on these labels. The relations of the form
+\[
+\alpha\,(\varphi(e_1) + \varphi(e_2)) \;+\; \beta\, \varphi(e_1)\varphi(e_2) \;+\; \gamma \;=\; 0
+\]
+for various coefficients $\alpha, \beta, \gamma$ are admissible combinatorial equations; more elaborate equations (involving labels from edges further away) require the introduction of additional bookkeeping --- exactly the kind of bookkeeping at which the photon-frame restriction baulks.
+
+\subsection{Energy and Momentum as Counting}
+
+The Hamiltonian~\eqref{eq:hamiltonian} is, on the lightlike graph, a sum over the corpus of edges
+\begin{equation}
+H \;=\; \sum_{e \in E} \omega(\varphi(e)),
+\label{eq:hamiltonian-sum}
+\end{equation}
+where $\omega(\varphi)$ is a function that records the energy cost of an edge carrying label $\varphi$. For a free field with action $\mathcal{L} = \tfrac{1}{2} \partial_\mu \phi\, \partial^\mu \phi - \tfrac{1}{2} m^2 \phi^2$, the natural choice is
+\[
+\omega(\varphi) \;=\; \sqrt{\varphi^2 + m^2},
+\]
+which is the relativistic dispersion relation, re-read as a function of the edge label. The Hamiltonian is a combinatorial sum, projectable, and arguably productive: it produces a numerical observable (the total energy of the corpus) from a labelling that is itself projectable.
+
+\subsection{Feynman Diagrams as Walks on the Corpus}
+
+The Feynman-diagram expansion of perturbative QFT can, on the lightlike graph, be reformulated as a combinatorial expansion over walks on the corpus. A propagator is a pairing of two edges compatible with a shared vertex; a vertex is a point at which several edges meet with label-relations imposed locally; a diagram is a connected subgraph of the corpus with all vertices and edges labelled. The Lee--Wick expansion, in this language, is just the sum over admissible connected subgraphs.
+
+This reformulation does not change the numerical predictions of perturbative QFT --- those are unchanged by the projection --- but it changes the \emph{visualisation}: a Feynman diagram is no longer a picture in spacetime; it is a picture of a subgraph of $\mathcal{G}$.
+
+\section{Three Textbook Constructions}
+\label{sec:examples}
+
+We illustrate the projection on three classical textbook constructions in scalar QFT: the free scalar, the $\phi^4$ interaction, and spontaneous symmetry breaking. Each will be rephrased on the lightlike graph. The aim is diagnostic, not exhaustive: to exhibit what survives the projection and what does not.
+
+\subsection{The Free Scalar Field}
+
+The free scalar field (no self-interaction, $V(\phi) = 0$) is the simplest case. The Euler--Lagrange equation is the Klein--Gordon equation
+\begin{equation}
+\partial_\mu \partial^\mu \phi \;+\; m^2 \phi \;=\; 0,
+\label{eq:kg}
+\end{equation}
+and the mode decomposition is~\eqref{eq:mode}.
+
+On the lightlike graph, the free scalar field becomes the field labelling $\varphi : E \to \mathbb{R}$ with the constraint that the labels satisfy a combinatorial version of~\eqref{eq:kg} at every vertex. The mode decomposition no longer makes sense as a Fourier decomposition over a continuum of momenta, but it has a combinatorial analogue: every photon edge has a \emph{combinatorial momentum} $\kappa(e)$, an integer (or real) number that indexes the mode. The constraint $\omega_k = \sqrt{\vec{k}^2 + m^2}$ becomes a combinatorial constraint $\omega(\varphi) = \sqrt{\kappa^2 + m^2}$, which is projectable.
+
+The vacuum is the configuration in which all edges have label zero (or another fixed value, depending on the symmetry breaking pattern). Excited states are configurations in which some edges receive non-zero labels.
+
+Verdict: the free scalar is \emph{projectable with substitutions}. The field becomes a labelling, the modes become indexed by an integer parameter that is projectable, the equation of motion becomes a combinatorial constraint, and the vacuum is the configuration at which the energy~\eqref{eq:hamiltonian-sum} is minimised.
+
+\subsection{The $\phi^4$ Interaction}
+
+A self-interacting scalar field with $V(\phi) = \lambda \phi^4/4!$ is the textbook example of an interacting QFT. The Feynman-diagram expansion is built out of $\phi^4$ vertices, each of which has four edges meeting.
+
+On the lightlike graph, a $\phi^4$ vertex is a vertex of degree four, with the constraint that the labels of the four incident edges $e_1, e_2, e_3, e_4$ satisfy
+\begin{equation}
+\lambda \cdot \varphi(e_1)\varphi(e_2)\varphi(e_3)\varphi(e_4) \;=\; \beta(\varphi),
+\label{eq:phi4}
+\end{equation}
+where $\beta(\varphi)$ is some function of the labels. The Feynman diagrams (built by contracting four-vertices in various ways) become subgraphs of the corpus in which every degree-four vertex satisfies the constraint.
+
+Verdict: the $\phi^4$ interaction is \emph{projectable with limitations}. The vertex structure of the original theory has a direct analogue (degree-four vertices), and the Feynman expansion has an analogue (sums over admissible subgraphs). The limitation is that the original theory's vertex structure (built from a continuum limit) does not survive in detail: the photon-frame restriction cannot speak of ``infinitesimal neighbourhood'', so the precise combinatorial structure of the vertex must be supplied as additional data.
+
+\subsection{Spontaneous Symmetry Breaking}
+
+A complex scalar field with a $\phi^4$ potential of the form $V(|\phi|^2) = -\mu^2 |\phi|^2 + \lambda |\phi|^4$ exhibits spontaneous symmetry breaking: the vacuum is degenerate, with a family of vacua $\phi = v\, e^{i\theta}$ for $v = \mu / \sqrt{\lambda}$ and arbitrary $\theta$. Excitations around a chosen vacuum are a massive mode (the Higgs mode) and a massless mode (the Goldstone mode).
+
+On the lightlike graph, symmetry breaking is a statement about the field labelling $\varphi$. The original theory says: there is a set of vacua (constants $|\phi| = v$), and small fluctuations around them have specific masses. On the bare graph, the constant configurations are labellings in which every edge has the same numerical value $\varphi = v$ (or $\varphi = v e^{i \theta}$ for complex fields). The excitations are labellings in which some edges differ from the rest, and the masses of the excitation modes are determined by the response of the labelling to small perturbations at a vertex.
+
+Verdict: spontaneous symmetry breaking is \emph{projectable, with the caveat that the choice of vacuum is external to the graph}. The bare graph does not select between vacua; the experimenter chooses a vacuum, and the bookkeeping partitions the corpus accordingly. This is, of course, the standard situation in any field theory; the lightlike graph adds no obstruction.
+
+\subsection{Summary}
+
+The three constructions arrange themselves into a small table:
+\begin{center}
+\begin{tabular}{lcc}
+                                          & \textbf{Projectable?} & \textbf{Productive in clarifying?} \\ \hline
+Free scalar field                          & yes-with-substitution & yes \\
+$\phi^4$ interaction                       & yes-with-limitations  & yes \\
+Spontaneous symmetry breaking             & yes-with-caveat       & partly
+\end{tabular}
+\end{center}
+The first column says whether the construction can be expressed in the photon-frame vocabulary; the second says whether the projection adds clarification analogous to the clarification it added in simpler puzzles. We have not claimed that the projection resolves the QFT questions; we have claimed that it clarifies some and leaves others unchanged.
+
+\section{Strategies for Dealing with the Unintuitiveness}
+\label{sec:deal}
+
+We now turn to the central question: the scalar field on the lightlike graph is unintuitive, and the projection does not recover the lost intuitions. How can we deal with this?
+
+\subsection{Strategy A: Recognise that the Unintuitiveness is Real}
+
+The first move is to recognise that the unintuitiveness is not a defect of the formalism but a feature. The photon-frame restriction has, by design, removed the landscape on which the field is a height-map. The constrained vocabulary cannot, and should not be expected to, recover the lost intuition. A reader who insists on rebuilding the intuitive landscape is doing a different theory, not the photon-frame theory.
+
+The corollary is that the questions the conventional scalar QFT asks, and the answers it gives, are not all re-askable in the photon-frame vocabulary. Some are --- the vacuum configuration, the constraint algebra, the combinatorics of diagrams --- and some are not --- the regeneration of spacetime from a continuum limit, the renormalisation flow, the Wilsonian picture of effective field theories. The graph does not erase those questions; it does not answer them either; it leaves them as questions whose setting we cannot reconstruct.
+
+\subsection{Strategy B: Decouple Algebra from Geometry}
+
+The second move is to decouple the algebraic content of QFT from its geometric content. The algebraic content (creation/annihilation operators, the commutation relations, the Feynman-diagram combinatorics) has a direct combinatorial analogue on the lightlike graph. The geometric content (the continuous spacetime, the local derivatives, the action principle) does not.
+
+The decoupling strategy treats the algebraic content as primary and the geometric content as a visualisation tool that may be unavailable in certain regimes. The reader is asked to think of the QFT as an algebra of operators and a combinatorics of diagrams, with a spacetime visualisation that is helpful in flat and curved settings and unhelpful in the lightlike setting. This is the strategy that most closely matches the spirit of the lightlike-graph programme; the previous papers in the series have used it consistently.
+
+\subsection{Strategy C: Embrace the Discrete}
+
+The third move is to embrace the discreteness of the photon-frame setting. The lightlike graph is a discrete object: vertices are events, edges are photon worldlines, and there is no continuum. A scalar field on a discrete object is, naturally, a discrete-valued function on the discrete structure. The ``unintuitive'' is, in this strategy, just the same as the usual: the field is discrete, and the answers the field gives are discrete.
+
+This is the strategy that resonates most with lattice field theory, in which the spacetime continuum is replaced by a discrete lattice and the field takes values on the vertices. The lightlike graph is a different lattice: vertices are emission/absorption events rather than sites on a spatial lattice. The mathematics is similar (discrete Fourier transforms, lattice actions, blocking procedures), and the conceptual baggage is approximately the same.
+
+\subsection{Strategy D: Trust the Audit and Stop}
+
+The fourth move is the simplest. After Strategies A--C, there remains a residue: questions of renormalisation, of vacuum energy, of symmetry breaking at finite temperature, of anomalies, of cosmological particle creation, and many others. These questions, in the photon-frame setting, do not have combinatorial reformulations that add clarity. The audit of which QFT questions survive the projection, and which do not, is itself a contribution: the canonical QFT literature has these questions scattered across many specialisations; the lightlike graph collects them as ``those that survive'' and ``those that do not''.
+
+Strategy D (\emph{stop after the audit}) is a compact statement: the lightlike graph is productive for tracking which field-value sits on which photon edge, and unproductive for many of the inferential questions on which the conventional theory is built. Believing the audit means ceasing to expect the photon-frame setting to answer what it cannot, and using it where it does.
+
+\subsection{Synthesis}
+
+The four strategies are not mutually exclusive. A reader of the scalar-QFT-on-lightlike-graph literature might combine:
+\begin{itemize}
+    \item Strategy A (unintuitiveness is real) as a philosophical commitment.
+    \item Strategy B (decouple algebra from geometry) as a methodological principle.
+    \item Strategy C (embrace the discrete) as a visualisation tool.
+    \item Strategy D (audit and stop) as a discipline on the inquiry.
+\end{itemize}
+We adopt all four in the present paper; the reader who prefers a different combination is welcome to choose.
+
+\section{Limits of the Lightlike-Graph Treatment}
+\label{sec:limits}
+
+\subsection{Vacuum Energy}
+
+The vacuum energy of a scalar QFT is the value of $\langle 0 | \hat{H} | 0 \rangle$, the expectation of the Hamiltonian in the vacuum state. This expectation is famously non-zero (and famously divergent, leading to the cosmological-constant problem). On the lightlike graph, the Hamiltonian~\eqref{eq:hamiltonian-sum} is a sum over edges of $\omega(\varphi)$, and the vacuum is the configuration that minimises this sum. The sum is well-defined provided every edge has a well-defined $\omega$, but the divergence associated with the continuum limit does not arise in the discrete setting. The vacuum energy in the discrete setting is finite, but it is the \emph{wrong} vacuum energy for the cosmological-constant problem: the cosmological-constant problem is a problem about reconciling the vacuum energy of the field with the curvature of spacetime, and the photon-frame restriction has discarded curvature and spacetime. Strategy D applies: we do not get the cosmological-constant problem in the photon-frame vocabulary.
+
+\subsection{Renormalisation}
+
+The renormalisation of a QFT --- the elimination of short-distance divergences by absorbing them into redefined couplings --- is a continuous procedure: the modes of the field at scales above the cutoff are integrated out, leaving an effective action for the modes below the cutoff. The photon-frame setting has no notion of scale at which to integrate modes out; the corpus of photon edges has no natural partition by energy or by size. Without a partition, there is no renormalisation-group flow, no running of couplings, and no Wilsonian picture. The bookkeeping of renormalisation is the bookkeeping of distinguishes-modes-by-scale, and the photon-frame vocabulary has no scale.
+
+\subsection{The Continuum Limit}
+
+The continuum limit of a lattice field theory is the limit in which the lattice spacing goes to zero and the field becomes a continuous function on spacetime. The lightlike graph has no lattice spacing, only the discrete structure of emission and absorption events. The continuum limit of the lightlike graph is, presumably, the conventional scalar QFT in which spacetime has been restored. But the limit is, in the photon-frame setting, outside the theory: there is no procedure inside the theory that takes one back to the continuum. The photon-frame theory is, by design, the theory in which the continuum has been discarded.
+
+\subsection{Higher-Spin and Gauge Fields}
+
+The scalar field is the simplest field. Spinor fields, vector fields, and tensor fields have additional structure (spin indices, gauge invariance, internal symmetries) that the scalar field lacks. Each of these additional structures admits a combinatorial analogue on the lightlike graph --- a labelling of edges by spinor indices, a labelling by gauge representations, a labelling by a colour index --- but the analogues are not as clean as the scalar-field analogue. We do not pursue them here; we note only that the scalar-field setting is the simplest case, and the complications only multiply when one attempts to project higher-spin theories onto $\mathcal{G}$.
+
+\subsection{The Observer Question}
+
+The observer of a scalar field is, in the conventional quantum theory, a detector that responds to the field's quanta. On the lightlike graph, the observer is a vertex that records the field label of incident edges. The observer's phenomenology --- what counts as a measurement, what determines an outcome --- is the same observer question that arose in articles 2, 3, 6, and 7; the lightlike-graph treatment does not resolve it. The observer is an absorption vertex with a particular labelling convention; the convention is supplied by the experimental practice, not by the theory.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have projected scalar quantum field theory onto the lightlike graph $\mathcal{G}$. The scalar field $\phi(x)$, in the conventional theory, is a function on spacetime; on $\mathcal{G}$, it becomes a labelling of the corpus of photon edges. The Lagrangian density becomes a combinatorial constraint on the labelling at vertices; the Hamiltonian becomes a sum over the corpus; the Feynman diagrams become subgraphs of $\mathcal{G}$ with local constraints. The mapping is, on the whole, clean, with substitutions for the continuous vocabulary and projectable reformulations of the algebraic content.
+
+The unintuitiveness of the picture is real, and we have not tried to deny it. The flat-space picture, which the reader finds intuitive, rests on a continuous spacetime landscape on which the field is a height-map; the photon-frame picture has discarded the landscape, and the height-map has nowhere to stand. The reader is asked to do QFT without the mental model that makes QFT easiest, and the request is unfair to intuition but fair to the principle that the photon-frame restriction is supposed to enforce.
+
+The four strategies (recognise, decouple, embrace, audit-and-stop) are the moves by which we deal with the unintuitiveness. None of them resolves the difficulty; each of them clarifies a different aspect of it. The strategies are not mutually exclusive, and we have used them in combination.
+
+The verdict of the audit is mixed. Some QFT questions --- free propagation, vacuum configuration, Feynman-diagram combinatorics, spontaneous symmetry breaking --- have clean photon-frame reformulations. Others --- renormalisation, vacuum energy, cosmological particle creation, continuum limit --- do not. The lightlike graph, on scalar QFT, is a clarification tool for the first class and a boundary marker for the second.
+
+The series is now eight papers long. The lightlike graph has been applied to Bell's theorem, the measurement problem, the black-hole information paradox, the Schr\"odinger--spacetime mismatch, the audit of string theory, the bookkeeping of source-labelled photons, the delayed-choice quantum eraser, time crystals, and now scalar quantum field theory. In every case the photon-frame restriction brought the underlying structure into combinatorial view, where it could be examined; in every case, where the combinatorial tool answered the question, the answer was the same as that of the conventional theory; in every case, where the tool could not answer the question, the boundary of its reach was crisp. The cumulative picture is one in which the lightlike graph is, by accumulation, the natural combinatorial setting of contemporary physics --- a setting in which many of the conceptual puzzles soften into questions about graph topology, and the remaining puzzles (those that resist combinatorial reformulation) are exactly the ones that have been the hardest in the conventional theory. The lightlike graph does not solve them; it identifies them.
+
+\end{document}

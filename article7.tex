@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\newcommand{\ket}[1]{|#1\rangle}
+
+\geometry{margin=1in}
+
+\title{Time Crystals on the Lightlike Graph:\\
+Periodicity Without Proper Time}
+\input{author}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A time crystal is, in the original Wilczek sense, a system whose lowest-energy state breaks time-translation symmetry: the ground state has a periodic structure that no translation in time can erase. Subsequent work has distinguished this proposal from the now experimentally realised \emph{discrete time crystals}, in which a periodically driven many-body system responds at a subharmonic frequency of the drive. We project the phenomenon onto the lightlike graph $\mathcal{G}$ developed in the companion papers. The restriction to photon frames has already discarded proper time, so the notion of ``oscillation in time'' has no direct representation; what we have instead is a \emph{recurrence} of certain subgraphs across a sequence of lightlike graphs, and an \emph{identifiability} question for repeated patterns. We find that the lightlike graph captures the empirical fingerprint of time-crystalline behaviour (subharmonic response, rigidity under perturbations, the role of a drive photon) in purely combinatorial terms, and that the bookkeeping of articles~5 and~6 --- source tagging, region tagging, future tagging --- can be applied with pay-off. The clarification we obtain is partial: the graph records what recurrence is, forecloses several naive readings (the system is not ``moving'' in any proper time), and provides a natural home for the distinction between equilibrium time crystals (forbidden by the standard no-go theorems) and driven (Floquet) time crystals (allowed and observed). The deeper questions --- why subharmonic responses are stable, and what selects the period --- remain, as in the previous papers, outside the combinatorics.
+\end{abstract}
+
+\section{Introduction}
+
+In the companion papers we have progressively restricted the vocabulary of theoretical physics. The most aggressive move was to discard every frame of reference other than the photon frame, and along with it to discard coordinates, the metric, and the proper time. What remained was the lightlike graph $\mathcal{G} = (V, E)$, a combinatorial object whose vertices are emission and absorption events and whose edges are photon worldlines. We applied this object to Bell's theorem, the measurement problem, the black-hole information paradox, the Schr\"odinger--spacetime mismatch, an audit of string theory, the bookkeeping of ``knowing which photons are whose'', and the delayed-choice quantum eraser. In every case the photon-frame restriction did not resolve the puzzle, but it did narrow the question to a combinatorial one.
+
+In the present paper we turn to a phenomenon that is, on its face, an embarrassment for the whole programme: \emph{time crystals}. A time crystal breaks time-translation symmetry, but our formalism has just discarded time. If we cannot even speak of time translations, what is there to break? The answer is that time-crystalline behaviour is, in the restricted theory, a statement about \emph{recurrence of subgraphs across a sequence of lightlike graphs}, and that this statement can be made without a primitive notion of time at all. Indeed, the lightlike graph is, from one point of view, the natural setting for the phenomenon: because the formalism is so austere, anything that looks like a cry stal becomes purely combinatorial, and the debates about whether some particular model is a time crystal translate into debates about which recurrences are observed.
+
+Our goal is pedagogical and diagnostic. We assume the reader knows that quantum mechanics allows superpositions, that energy eigenstates are stationary, and that general relativity couples time to geometry. From that background we explain what time crystals are, what the no-go theorems forbid and what they permit, and how the lightlike graph clarifies the picture.
+
+The plan is as follows. Section~\ref{sec:background} reviews, briefly, the physics of time crystals: Wilczek's original proposal, the no-go theorems for equilibrium time crystals, and the experimentally realised driven (Floquet) time crystals. Section~\ref{sec:baregraph} asks what a time crystal looks like on the bare lightlike graph $\mathcal{G}$, and introduces the sequence-of-graphs formalism from article~3. Section~\ref{sec:recurrence} develops the notion of \emph{subgraph recurrence} as a combinatorial stand-in for time periodicity. Section~\ref{sec:bookkeeping} applies the article-5 and article-6 bookkeeping to the time-crystalline setting, identifying the role of the drive photon via source tagging and the role of the subharmonic response via future tagging. Section~\ref{sec:limits} registers what the formalism cannot do. Section~\ref{sec:conclusion} summarises.
+
+\section{Background: What a Time Crystal Is}
+\label{sec:background}
+
+\subsection{Why Time Translation is a Symmetry We Expect to Keep}
+
+In ordinary quantum mechanics the Hamiltonian $\hat{H}$ is the generator of time translations. If the wave function at time $t = 0$ is $\ket{\psi(0)}$, the wave function at time $t$ is
+\begin{equation}
+\ket{\psi(t)} \;\:=\;\: e^{-i\hat{H}t/\hbar}\,\ket{\psi(0)}.
+\label{eq:evolution}
+\end{equation}
+A state $\ket{\phi}$ of definite energy $E$ satisfies $\hat{H}\,\ket{\phi} = E\,\ket{\phi}$, and the time evolution then multiplies it only by a phase $e^{-iEt/\hbar}$. Such a state is \emph{stationary}: all expectation values are time-independent. In other words, no quantum-mechanical system in a definite energy eigenstate can have a time-dependent order parameter.
+
+The same conclusion arises classically. The ground state of a Hamiltonian system occupies the minimum of the potential energy. If the ground state were to oscillate, kinetic energy would flow in and out of motion, contradicting the claim that the energy is minimal. Time-translation symmetry is, accordingly, expected to hold in the ground state of any closed system.
+
+\subsection{Wilczek's Proposal (2012)}
+
+Frank Wilczek proposed, in 2012, to relax this expectation. Consider a system whose ground state is the configuration of \emph{minimum energy}, and suppose the ground state exhibits a periodic motion in time. Such a system would break time-translation symmetry in the same way that an ordinary spatial crystal breaks spatial-translation symmetry: the system has a definite pattern in the variable (here, time) and the Hamiltonian has a higher symmetry (translations by an arbitrary amount) than the state does (translations only by the period of the pattern).
+
+Wilczek argued, with Alfred Shapere, that a concrete model could realise this. The model was a ring of superconducting particles carrying a fraction of the flux quantum; in the proposed configuration the ground state was claimed to support a persistent current that circulates the ring --- a perpetual motion in the lowest energy state. The proposal attracted immediate attention.
+
+\subsection{The No-Go Theorems}
+
+Within a few years, several no-go theorems had appeared. Watanabe, Oshikawa, Bruno, and others showed, with varying technical assumptions, that a system in thermal equilibrium with a bath cannot have a time-dependent order parameter in its ground state: the minimum-energy state is stationary, and the only allowed periodic states in equilibrium carry some excitation above the ground state. The no-go theorems are not refutations of all forms of time crystallinity; they are precise statements about which forms are forbidden and which are not.
+
+\subsection{Discrete Time Crystals (Floquet)}
+
+The experimentally realised time crystals are not in equilibrium. They are \emph{Floquet systems}: closed quantum systems subject to a periodic drive. The Hamiltonian is itself time-dependent,
+\begin{equation}
+\hat{H}(t + T) \;\:=\; \hat{H}(t),
+\label{eq:floquet}
+\end{equation}
+for some drive period $T$. The stroboscopic evolution --- the evolution sampled at integer multiples of $T$ --- is then a discrete map on the Hilbert space, and the question of whether this map has time-crystalline structure is well-posed.
+
+The signature of a discrete time crystal is subharmonic response: if the drive has period $T$, the system responds at a period $nT$ for some integer $n > 1$. This means that the system's state at $t + nT$ is, in some observable, the same as its state at $t$, but at intermediate multiples of $T$ it is not. The rigorous framework, due to Yao and collaborators (2016) and confirmed experimentally in trapped-ion spin chains (2017) and nitrogen-vacancy centres, requires:
+\begin{enumerate}
+    \item Many-body localisation (MBL) to prevent the system from thermalising to the infinite-temperature state.
+    \item Strong interactions that synchronise the oscillators in the system.
+    \item A subharmonic and rigid response to perturbations of the drive.
+\end{enumerate}
+The experiments established that the subharmonic response is stable: small changes in the drive frequency or coupling strengths do not destroy the periodicity, only shift it within a narrow band.
+
+\subsection{Two Senses of ``Time Crystal''}
+
+Two senses of ``time crystal'' are now standard in the literature. The original Wilczek sense is the \emph{equilibrium} time crystal: a ground state exhibiting periodic motion, which the no-go theorems forbid. The experimentally supported sense is the \emph{discrete} time crystal: a driven, non-equilibrium, many-body localised system whose observable evolution has a longer period than the drive. The two senses share the name because they both break a time-translation symmetry --- the equilibrium sense breaks the continuous time-translation symmetry, the discrete sense breaks only the discrete time-translation symmetry.\footnote{Whether the discrete sense is genuinely ``crystalline'' is contested in the literature; we use the term as a label, not as a verdict.}
+
+\section{Casting Time on the Lightlike Graph}
+\label{sec:baregraph}
+
+\subsection{The Problem}
+
+The lightlike graph $\mathcal{G}$ has no proper time. The photon frame restriction has, as one of its consequences, removed the very thing that time-translation symmetry is a symmetry of. To make sense of time crystals on $\mathcal{G}$, we must find a substitute notion. The substitute is the sequence of graphs from article~3.
+
+\subsection{The Sequence of Lightlike Graphs}
+
+Recall from article~3 that, after the photon-frame restriction, the time-dependent Schr\"odinger equation~\eqref{eq:evolution} becomes a sequence of graph extensions
+\begin{equation}
+\mathcal{G}_0 \;\to\; \mathcal{G}_1 \;\to\; \mathcal{G}_2 \;\to\; \cdots,
+\label{eq:graph-walk}
+\end{equation}
+each step adding the next allowed edge. The sequence~\eqref{eq:graph-walk} has no external parameter; what indexes it is the discrete order of emission/absorption events as recorded by the corpus of photons. We may think of the index $n$ as a \emph{combinatorial successor} rather than a time: $n + 1$ is the next state of the corpus, where ``next'' is defined by ``containment plus one more edge''. The Hamiltonian $\hat{H}$ becomes a transition rule on graphs, not an operator on Hilbert space.
+
+\subsection{Time Crystals as Recurrence}
+
+A time crystal is, on the bare graph, a sequence of graphs~\eqref{eq:graph-walk} in which some feature repeats at regular intervals of the index $n$. More precisely, a time crystal is a sequence in which a particular subgraph pattern $\mathcal{P}$ occurs at indices $n_k$ that are themselves periodic: $n_{k+1} - n_k = N$ for some integer $N$, with the pattern absent (or replaced by a distinct pattern) at indices between $n_k$ and $n_{k+1}$.
+
+In equilibrium, the corresponding condition is that the sequence is invariant under translation in the index $n$: the pattern $\mathcal{P}$ at every step is the same. The equilibrium case is, in this language, the trivial ``recurrence'' at period $N = 1$. The Wilczek sense of a time crystal would be a recurrence at period $N > 1$ in a system whose sequence is not externally driven.
+
+The no-go theorems now read, on the bare graph, as statements about which sequences of graphs are reachable by which transition rules. A time-independent transition rule produces a sequence that is periodic with period $N$ only if it has periodic structure; there are theorems saying that, under typical conditions, no periodic structure arises.
+
+\subsection{The Role of the Drive}
+
+A Floquet (discrete) time crystal is a system whose transition rule is \emph{itself periodic}: there is a finite collection of transition rules $\{T_1, T_2, \ldots, T_m\}$ that are applied in cycle, so that the sequence of graphs becomes
+\begin{equation}
+\mathcal{G}_0 \xrightarrow{T_1} \mathcal{G}_1 \xrightarrow{T_2} \cdots \xrightarrow{T_m} \mathcal{G}_m \xrightarrow{T_1} \mathcal{G}_{m+1} \xrightarrow{T_2} \cdots,
+\label{eq:driven-walk}
+\end{equation}
+and the cycle has period $m$ in the index. A subharmonic time crystal has a sequence in which the \emph{observable} pattern recurs with period $n \cdot m$ for some integer $n > 1$ --- that is, the pattern recurs every $n$-th cycle, not every cycle.
+
+This is the combinatorial fingerprint of the phenomenon. The drive photon (and the drive's role in imposing periodic structure) becomes a vertex of the lightlike graph itself: it is the apex of a star emitting one photon per drive period, with the subharmonic response visible in the spacing between successive absorption events in the receiver.
+
+\section{Recurrence on the Lightlike Graph}
+\label{sec:recurrence}
+
+\subsection{Subgraph Recurrence Made Precise}
+
+Let $\mathcal{P}$ be a pattern of vertices and edges. We say the sequence~\eqref{eq:graph-walk} \emph{recurs} the pattern $\mathcal{P}$ at index $n$ if there is an isomorphism between $\mathcal{P}$ and a subgraph of $\mathcal{G}_n$ that respects the edges and the labelling (whatever labelling we have chosen). A time crystal is a sequence in which there exists a pattern $\mathcal{P}$ and an integer $N > 1$ such that $\mathcal{P}$ recurs at every index of the form $n_k = n_0 + kN$ and does not recur at intermediate indices.
+
+The \emph{period} of the time crystal is $N$. The Wilczek-style equilibrium time crystal would have $N > 1$ with the recurrence realised in the sequence itself; the Floquet discrete time crystal has $N$ an integer multiple of the drive's combinatorial period $m$.
+
+\subsection{Illustration: A Driven Two-Level System}
+
+Consider a two-level system driven periodically by an external photon source (a laser). The laser emits a drive photon with period $T$; at each photon arrival, the system either absorbs the photon (jumping up) or does not (staying in place). The lightlike graph generated by this experiment, restricted to the drive events and the system responses, looks as follows:
+\begin{center}
+\begin{tabular}{c}
+$D_1 \leftarrow L \rightarrow A_1$ \\
+$D_2 \leftarrow L \rightarrow A_2$ \\
+$D_3 \leftarrow L \rightarrow A_3$ \\
+$\cdots$
+\end{tabular}
+\end{center}
+where $L$ is the laser emission vertex, $D_k$ are the drive photon absorption vertices (occurring at period $T$), and $A_k$ are the system-response absorption vertices (occurring only at every $n$-th drive, for some integer $n > 1$).
+
+The sequence of graphs has a clear pattern: the drive photons $D_k$ recur at every step, but the system responses $A_k$ recur only at every $n$-th step. The lightlike graph does not say \emph{why} the system responds at every $n$-th drive; that is the work of MBL and the interaction structure of the system, which are dynamical features the bare graph does not record. But the bare graph does record the \emph{pattern of responses}, which is the combinatorial content of the subharmonic response.
+
+\subsection{What the Recurrence Reveals}
+
+The lightlike graph makes explicit that the subharmonic response is a property of the corpus of photon edges, not a property of ``time'' itself. The graph encodes the period as a count of edges between successive realisations of the pattern, which is a purely combinatorial statement. The Wilczek intuition --- that the system is ``doing something periodically in time'' --- is preserved as the statement ``the system is producing a periodic pattern of edges''.
+
+This is the clarification we seek. In a setting where time is gone, what looks like periodicity in time becomes, transparently, periodicity in graph structure. The phenomenon has not been dissolved; it has been translated.
+
+\section{Bookkeeping on Time Crystals}
+\label{sec:bookkeeping}
+
+\subsection{Source Tagging for the Drive}
+
+In a Floquet time crystal, the drive photon is the external agent imposing periodicity on the system. Without source tagging, the bare graph records that some photon edges arrive at the system vertices, but it does not say which photon is the drive and which is part of the system's response. With source tagging (from article~5), we can assign a special source tag $\sigma(L)$ to the laser vertex, and partition the incoming photon edges into drive photons (tagged with $L$) and response photons (tagged with the system).
+
+The drive tagging is a serious example of \emph{productive} bookkeeping. The bare graph conflates the drive photon with the system response; source tagging distinguishes them in a way the bare graph cannot. The bookkeeping is projectable (no coordinates or metric required to distinguish drive from response), and it does combinatorial work (it partitions the edges into classes that the bare graph does not separate). The verdict is \emph{yes-yes}.
+
+\subsection{Region Tagging for the Localisation}
+
+Many-body localisation is the dynamical mechanism that stabilises the subharmonic response: it prevents the system from thermalising, so the response cannot drift to the wrong period. On the lightlike graph, MBL is a constraint on the \emph{regions in which photons are absorbed}. A localised system absorbs photons in a small spatial region; a thermalised system absorbs photons over the full spatial region. Region tagging (from article~5) makes this distinction explicit: the absorption vertices carry a region tag $\rho(v)$, and the tagged graph records that the drive responses occur in a localised region.
+
+The verdict is \emph{yes-yes} on region tagging for time crystals: the bare graph does not record localisation, and the bookkeeping does.
+
+\subsection{Future Tagging for the Subharmonic Choice}
+
+A subharmonic response is a \emph{choice} by the system of which drive cycle to respond to. In the language of article~6, the choice is associated with a \emph{branched absorption vertex}: an absorption vertex of the system at which the future can take several mutually exclusive forms. Future tagging $\phi$ records the set of permitted completions at each branched vertex. In the time-crystal case, the branched vertex is a system response vertex, and $\phi$ records the set of cycles at which the response might occur.
+
+The future tagging is productive here for the same reason as in the eraser: it makes explicit a pattern of branching that the bare graph does not record. The verdict is \emph{yes-yes} on future tagging.
+
+\subsection{The Verdict Table}
+
+\begin{center}
+\begin{tabular}{lcc}
+                              & \textbf{Bare graph?} & \textbf{Productive for time crystals?} \\ \hline
+Identity (article 5)          & cosmetic & cosmetic \\
+Source/Pair (article 5)       & inactive & productive (drive) \\
+Object (article 5)            & cosmetic & cosmetic-but-useful (laser vs. system) \\
+Region (article 5)            & inactive & productive (MBL) \\
+\textit{Future} (article 6)    & inactive & productive (subharmonic choice) \\
+\end{tabular}
+\end{center}
+The productive entries are the bookkeepings that the empirical account of time crystals \emph{requires}: source tagging to mark the drive, region tagging to mark localisation, and future tagging to record the subharmonic choice. Identity and object tagging are cosmetic but useful: they allow the experimenters to talk about which specific photon was the next drive photon, and which object they were observing.
+
+\section{Limits of the Lightlike-Graph Treatment}
+\label{sec:limits}
+
+\subsection{Stability of the Subharmonic Response}
+
+The signature feature of a discrete time crystal is that the period is \emph{rigid}: small perturbations of the drive frequency, the interaction strength, or the system parameters do not change the period. The lightlike graph records the period as a count of edges between realisations, but it does not say why the period is robust. Robustness is a property of the dynamics (many-body localisation, interaction structure) that the bare graph does not encode. The bookkeeping (region tagging for MBL) records that localisation is present, but it does not \emph{explain} why localisation prevents thermalisation.
+
+\subsection{Why the Period is Integer}
+
+In a Floquet time crystal the period is an integer multiple of the drive period. This is, on the lightlike graph, the statement that the recurrence index $N = nm$ for integer $m$. Why the period is integer --- or, more subtly, why it is the largest integer compatible with MBL --- is a dynamical question outside the combinatorial account. Some answers rely on perturbative arguments (Floquet theory), others on stability against drift; the lightlike graph registers the fact of the integer period but not its explanation.
+
+\subsection{The Wilczek Sense is Forbidden}
+
+The no-go theorems forbid Wilczek-style equilibrium time crystals. On the lightlike graph, this is the statement that a sequence of graphs produced by a time-independent transition rule cannot exhibit recurrence with $N > 1$. The lightlike graph records the prohibition (it cannot portray an equilibrium recurrence), but the prohibition itself is a theorem about Hamiltonian dynamics, not a theorem about graph combinatorics. The graph account is silent on \emph{why} the dynamical theorem holds.
+
+\subsection{The Observer Question}
+
+A time crystal must have an observer who records the periodic pattern. The observer is, on the lightlike graph, an absorption vertex that sees the recurring pattern. This is the same observer-as-vertex picture developed in article~3 and used in article~6: the observer is internal to the corpus, and the pattern is recorded at one of its vertices. The lightlike graph does not say what constitutes an ``observer'' capable of recognising the pattern; that question is the same in physics generally and has the same status here as in the previous papers.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have projected time crystals --- both the Wilczek equilibrium sense and the experimentally realised Floquet discrete sense --- onto the lightlike graph $\mathcal{G}$. The restriction has discarded proper time, and so the literal statement ``the system oscillates in time'' has no representation. The substitute notion is \emph{subgraph recurrence} in a sequence of lightlike graphs: the system's corpus exhibits a pattern that recurs at regular intervals of the combinatorial index.
+
+The lightlike graph is at home with the empirical fingerprint of time-crystalline behaviour. Subharmonic response is the recurrence of a pattern at every $n$-th step of an externally driven sequence. Many-body localisation is the partitioning of absorption vertices by a region tag. The drive photon is the source of a tagged star of edges imposing periodic structure on the corpus. The bookkeeping of articles~5 and~6 --- source tagging, region tagging, future tagging --- is productive on every one of these features.
+
+The lightlike graph does not resolve the deeper questions. Why is the subharmonic response rigid? Why is the period an integer? Why are equilibrium time crystals forbidden? These are dynamical questions about the transition rules between graphs; the bare graph records their effects but not their explanations. The verdict is, again, \emph{clarification}, not \emph{resolution}: the lightlike graph narrows the question to a combinatorial one and forecloses naive readings (the system is not ``moving'' in any proper time, since proper time is gone; the experiment is doing periodic bookkeeping, not invoking a temporal flow), but it leaves the dynamics for other tools.
+
+The pedagogic aim of the paper, set out at the beginning, was to make time crystals intelligible from the vantage point of an audience already comfortable with quantum mechanics and general relativity. From that vantage point, the time-translation symmetry of a Hamiltonian is something the audience expects to keep in equilibrium; they are likely to have heard of the no-go theorems and the discrete-time-crystal experiments without seeing how the two are related. The lightlike-graph account shows the relation: the equilibrium case is forbidden because the transition rule is time-independent, the driven case is allowed because the drive is itself a vertex in the graph imposing a periodic structure on the corpus of photon edges, and the subharmonic response is a combinatorial choice at a branched absorption vertex. The audience's intuition can be preserved and clarified without being violated.
+
+The series is now seven papers long. The lightlike graph has been applied to Bell's theorem, the measurement problem, the black-hole information paradox, the Schr\"odinger--spacetime mismatch, the audit of string theory, the bookkeeping of source-labelled photons, the delayed-choice quantum eraser, and time crystals. In every case the photon-frame restriction brought the underlying structure into combinatorial view, and in every case the underlying structure was indeed combinatorial. The lightlike graph is, by accumulation, the natural setting in which the conceptual questions of contemporary physics become precise: precise enough to ask, precise enough to recognise their scope, and precise enough to leave the dynamic content for the methods that come after.
+
+\end{document}

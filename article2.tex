@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\newcommand{\ket}[1]{|#1\rangle}
+
+\geometry{margin=1in}
+
+\title{A Photon-Frame Theory:\\
+Spacetime as a Lightlike Graph}
+\input{author}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We propose to take seriously the perspective that, in a physical theory, the only legitimate reference frames are those of photons themselves. The standard objection to this position --- that Lorentz boosts to $v = c$ are singular --- is set aside as a feature rather than a bug: the singularity encodes the fact that emission and absorption become coincident in the photon's frame. Under this restriction, ordinary spacetime coordinates are no longer available, and the only geometric structure left is a graph whose edges are null geodesics (photon worldlines) and whose vertices are emission and absorption events. We call this structure the \emph{lightlike graph}. We show that, when three long-standing problems --- Bell's theorem and quantum nonlocality, the measurement problem of quantum mechanics, and the black-hole information paradox --- are recast on this graph, several apparent contradictions soften into questions about graph topology, and the resulting reformulations suggest fresh avenues of attack.
+\end{abstract}
+
+\section{Introduction}
+
+In a companion paper we argued that the reference frame of a single photon, although degenerate in the Lorentzian sense, is a coherent bookkeeping device: it identifies which events are causally related by lightlike separation, without supplying coordinates for those events. We used this device to reason about single photons, sequences of photons, and the topology of causal chains.
+
+The present paper goes further. We propose to \emph{restrict} our theory to photon frames of reference and to \emph{discard} any mathematics that refers to frames travelling at speeds other than $c$. The motivation is twofold. First, the photon is the only particle whose frame produces a strict identification of emission with absorption, and that identification is precisely the information we want to retain when reasoning about causal structure. Second, every observation we make of distant events is mediated by a photon, so any frame in which we are \emph{not} travelling at $c$ is, epistemically, a frame in which our access to events is mediated by lightlike intervals that we have, in effect, smudged into timelike ones by choosing the wrong vantage point.
+
+Discarding $v \neq c$ frames collapses Minkowski space onto a graph. The vertices of the graph are spacetime events, and the edges are null geodesics connecting an emission to the corresponding absorption. What remains is, mathematically, a directed acyclic graph embedded in the original spacetime, but the embedding is no longer the object of study --- only the graph is. We call this object the \emph{lightlike graph} $\mathcal{G} = (V, E)$ and proceed to study what can be done with it.
+
+The plan of the paper is as follows. Section~\ref{sec:framework} sets up the formal framework: which objects are retained, which are discarded, and what the algebraic structure of the lightlike graph is. Sections~\ref{sec:bell}, \ref{sec:measurement}, and \ref{sec:bhi} then recast three well-known problems in terms of $\mathcal{G}$. Section~\ref{sec:conclusion} collects the resulting insights.
+
+\section{A Framework Restricted to Photon Frames}
+\label{sec:framework}
+
+\subsection{What is Retained}
+
+A \emph{photon reference frame} is the degenerate limit $v \to c$ of a Lorentz boost along the photon's direction of propagation. As shown in the companion paper, in this limit the temporal and spatial separations between emission $E$ and absorption $A$ both vanish, so $E$ and $A$ coincide. The proper-time interval between $E$ and $A$ is identically zero. Causal order on the light cone is preserved: in every photon frame, $E$ and $A$ are identified, but in no photon frame is $E$ ordered after $A$.
+
+Restricting to photon frames means restricting attention to relations of the form: \emph{event $A$ is lightlike-related to event $B$ via a photon worldline}. Anything that cannot be expressed as such a relation is, by fiat, outside the theory.
+
+\subsection{What is Discarded}
+
+In particular, the following are discarded:
+\begin{itemize}
+    \item Coordinates $(t, \vec{x})$ in any inertial frame with $v < c$.
+    \item Timelike intervals between events not separated by a photon worldline.
+    \item The notions of ``before'' and ``after'' that depend on a non-zero proper time.
+    \item The notion of ``distance'' between events except the lightlike interval $s^2 = 0$.
+\end{itemize}
+
+These are not denied; they are simply declared out of scope. In a theory built solely on photon frames, the only primitive is the lightlike relation.
+
+\subsection{The Lightlike Graph}
+
+Let $\mathcal{M}$ denote the set of all spacetime events of interest. Given the corpus of photons under consideration, let $V \subseteq \mathcal{M}$ be the set of all emission and absorption events, and let $E \subseteq V \times V$ be the set of all ordered pairs $(E_i, A_i)$ for each photon $p_i$. Then
+\[
+\mathcal{G} \;=\; (V, E)
+\]
+is the \emph{lightlike graph} of the corpus. Each photon contributes one directed edge from its emission vertex to its absorption vertex, both of which lie in $V$. The underlying undirected graph is acyclic when restricted to any causally consistent slice, but may contain cycles of even length when two antiparallel photons are present (as in the two-photon configuration of the companion paper, where the two edges $p_{AB}$ and $p_{BA}$ form a two-cycle through the meeting vertex).
+
+\subsection{Topology of the Graph}
+
+The graph $\mathcal{G}$ inherits from ambient Minkowski space only the constraint that edges are null, so the \emph{geometric data} (lengths, angles) is gone. What remains is the \emph{combinatorial data}: which vertices are connected, by how many parallel edges, and what the resulting in- and out-degrees are. The theory built on photon frames is, therefore, a combinatorial theory --- it manipulates the incidence structure of $\mathcal{G}$, not its embedding.
+
+A useful local quantity at a vertex $v$ is the \emph{degree multiset}
+\[
+\partial v \;=\; (\partial^- v, \, \partial^+ v),
+\]
+where $\partial^- v$ is the number of edges arriving at $v$ (i.e.\ absorption events at $v$) and $\partial^+ v$ is the number of edges departing from $v$ (i.e.\ emission events at $v$). The total degree $|\partial v| = \partial^- v + \partial^+ v$ counts the photons involved at $v$.
+
+\section{Bell's Theorem and Quantum Nonlocality}
+\label{sec:bell}
+
+\subsection{Statement of the Problem}
+
+Two entangled photons $p_1$ and $p_2$ are produced at a common source at event $S$. They propagate in opposite directions and are absorbed at spacelike-separated events $A_1$ and $A_2$, where measurements in two randomly chosen bases $b_1$ and $b_2$ are performed. Quantum mechanics predicts correlations that violate any Bell inequality, and experiments confirm the violation. The puzzle --- what \emph{carrries} the correlation across the spacelike separation of $A_1$ and $A_2$ --- is the problem of \emph{quantum nonlocality}.
+
+\subsection{Standard Framings}
+
+In an inertial frame, $A_1$ and $A_2$ are spacelike-separated, so no signal travelling at any speed $\leq c$ can connect them. The standard explanations therefore invoke either a holistic wave function (de~Broglie--Bohm, many-worlds) or a collapse that ``happens'' at measurement. Both explanations rely on substantive physics \emph{in between} $S$, $A_1$, $A_2$ --- on a story told in some frame in which there is a ``middle'' to the experiment. This is precisely the machinery that the photon-frame restriction discards.
+
+\subsection{Cast on the Lightlike Graph}
+
+In the lightlike graph $\mathcal{G}$, the experiment has only three vertices:
+\[
+V \;=\; \{S, A_1, A_2\},
+\]
+and two edges:
+\[
+E \;=\; \{(S, A_1), \, (S, A_2)\}.
+\]
+The graph looks as follows:
+\begin{center}
+\begin{tabular}{c}
+$A_1 \leftarrow S \rightarrow A_2$ \\
+\end{tabular}
+\end{center}
+There is \emph{no edge between $A_1$ and $A_2$}. The two photons share only the source vertex $S$, and from any vertex other than $S$ the graph is a single ray.
+
+\subsection{What the Graph Sees}
+
+The question ``how is the correlation carried between $A_1$ and $A_2$?'' is, in the graph, the question ``what walks from $S$ to both $A_1$ and $A_2$?''. The answer, expressed as a property of $\mathcal{G}$, is that the two edges $(S, A_1)$ and $(S, A_2)$ originate at a \emph{common vertex} $S$. Combinatorially, this is a statement of common ancestry: the data observed at $A_1$ and at $A_2$ are \emph{identical} at $S$ and \emph{disjoint} thereafter.
+
+This is not a mechanism: the graph has no mechanism, only structure. But it is a \emph{picture of what the experimental correlations could be said to be a property of}: they are a property of the common origin $S$, not of any process in the region between the two absorptions. In the theory restricted to photon frames, the spacelike separation of $A_1$ and $A_2$ is not the relevant fact; the relevant fact is their common source.
+
+\subsection{Consequence}
+
+Bell's inequality violation, in this language, is not a surprise. An inequality depends on a notion of \emph{independent settings} $b_1$ and $b_2$, and ``independent'' is a notion expressed in a frame in which $b_1$ and $b_2$ can be chosen freely at spacelike separation. In a theory restricted to photon frames, the only choice points are the absorptions, and the relevant notion is the in-degree at $S$. The boundary $b_2$ chosen at $A_2$ cannot influence the boundary $b_1$ chosen at $A_1$ through any edge of $\mathcal{G}$, but the outcomes observed at $A_1$ and $A_2$ are constrained by the vertex $S$, which is shared. This shared vertex is where the ``nonlocality'' lives --- as a feature of the graph, not as faster-than-light influence.
+
+What the photon-frame restriction buys us, here, is not a resolution of Bell's theorem but a clarification of what the theorem actually says about the underlying structure: it says that the underlying structure is a graph, not a spacetime, and that the correlations are properties of graph topology, not of signals.
+
+\section{The Measurement Problem}
+\label{sec:measurement}
+
+\subsection{Statement of the Problem}
+
+A quantum system in superposition is brought into contact with a detector. After the interaction, the system is observed to be in a definite eigenstate of the measured observable. The question of how the superposition ``collapses'' to a single outcome --- or, on the many-worlds view, how the world ``branches'' --- is the measurement problem.
+
+Standard discussions invoke an ``observer'', a ``Heisenberg cut'', or a branching universal wave function. All of these require a story told from a particular frame, in which the measuring apparatus is at rest and the superposition evolves into a definite outcome over a finite proper time.
+
+\subsection{Cast on the Lightlike Graph}
+
+Consider a single photon $p$ in a superposition of states $\ket{\psi_1}$ and $\ket{\psi_2}$, incident on a detector $D$. Eventually $D$ fires one of two click-channels $C_1$ or $C_2$, depending on the outcome. Each click is the absorption of one photon; from the perspective of the lightlike graph:
+\begin{itemize}
+    \item The photon $p$ provides an edge from $E_p$ to a vertex $A_p$ on the detector.
+    \item Which vertex $A_p$ is --- whether it is the $C_1$-vertex or the $C_2$-vertex --- is determined by the measurement outcome.
+\end{itemize}
+
+The lightlike graph has two ``completions'':
+\begin{align}
+\mathcal{G}_1 \;:\;\; V_1 &= \{E_p, A_p^{(1)}, A_p^{(2)}, \ldots\}, \quad \text{with } (E_p, A_p^{(1)}) \in E_1,\\
+\mathcal{G}_2 \;:\;\; V_2 &= \{E_p, A_p^{(1)}, A_p^{(2)}, \ldots\}, \quad \text{with } (E_p, A_p^{(2)}) \in E_2.
+\end{align}
+The vertices are the same; only the edge from $E_p$ differs. In one graph $E_p$ connects to the first click-channel; in the other, to the second.
+
+\subsection{What the Graph Sees}
+
+What the lightlike graph records is not ``which outcome occurred'' but ``which edges are present''. The two possible completions $\mathcal{G}_1$ and $\mathcal{G}_2$ are two distinct graphs, each consistent with the lightlike data available to a photon-frame observer. There is, in the restricted theory, no operation that selects between them: the choice of which edge is present is, in the language of this paper, a \emph{branching}, and the branches are the only objects the theory manipulates.
+
+This is not the standard many-worlds position. The point is more modest: in a theory restricted to photon frames, the wave function is never evaluated at intermediate points along an edge, because such intermediate points are absorbed into the endpoints by the frame restriction. The measurement outcome lives at the absorption vertex, and the only question the theory can ask is ``does this edge go to $C_1$ or to $C_2$?''. The two are mutually exclusive, and they produce mutually exclusive completions of the graph.
+
+\subsection{Consequence}
+
+The measurement problem, in the photon-frame setting, becomes a question of graph branching: at which vertices does the lightlike graph have more than one legal continuation, and what principles select among the legal continuations? No mechanism of collapse is invoked, because collapse in the standard sense involves a continuous evolution towards a definite state over a finite proper time, and that evolution has no representation in $\mathcal{G}$, which has no proper time. What the restricted theory offers is a different vocabulary: outcomes are edges, and clicks are vertices. The puzzle is moved, not dissolved --- but it is moved to a place where the photon-frame restriction is ``at home''.
+
+\section{The Black Hole Information Paradox}
+\label{sec:bhi}
+
+\subsection{Statement of the Problem}
+
+A pure quantum state collapses into a black hole and is later emitted as Hawking radiation. The outgoing radiation appears to be in a thermal (mixed) state, in apparent contradiction with the unitarity of quantum mechanics. The information originally encoded in the infalling matter appears to be lost. This is the black-hole information paradox.
+
+Many proposed resolutions exist (Page curve, fuzzball, firewall, ER=EPR), each invoking structure not directly visible in the original Hawking calculation. All of them involve, however, stories about what happens \emph{inside} the horizon --- and ``inside'' is a notion expressed only in frames that cross the horizon, which are frames with substantial proper time on the infalling side.
+
+\subsection{Cast on the Lightlike Graph}
+
+For a black hole of mass $M$, the event horizon is a null surface at the Schwarzschild radius $r_s = 2GM/c^2$. Photons travelling outward from $r < r_s$ are infalling; photons travelling outward from $r = r_s$ are marginally trapped; photons travelling outward from $r > r_s$ are ordinary Hawking quanta emitted from just outside the horizon.
+
+In the lightlike graph, the event horizon is the \emph{set of null geodesics that are tangent to the horizon at emission and tangent to the horizon at absorption}. A photon emitted by matter inside the horizon will be absorbed inside the horizon; a photon emitted just outside will escape. There is no edge in $\mathcal{G}$ that begins inside the horizon and ends outside it --- such a photon would have to travel outward from $r < r_s$, which no null geodesic can do.
+
+\subsection{What the Graph Sees}
+
+The black-hole interior is, in the lightlike graph, the \emph{set of vertices not connected to infinity by any directed path}. Once a vertex lies in this set, every edge starting at that vertex also ends in the set: the interior is closed under outgoing light. From the point of view of the photon-frame restriction, the interior is a \emph{well-defined subgraph} $\mathcal{G}_{\mathrm{int}}$ of $\mathcal{G}$, and escape to infinity is the question of whether a vertex belongs to $\mathcal{G}_{\mathrm{int}}$ or to its complement.
+
+Hawking radiation, in this language, is a set of edges whose tail-vertices lie on the boundary of $\mathcal{G}_{\mathrm{int}}$ and whose head-vertices lie outside it. The information paradox becomes the question: is the boundary of $\mathcal{G}_{\mathrm{int}}$ ``large enough'' --- combinatorially --- to encode all the edges that tail at vertices in $\mathcal{G}_{\mathrm{int}}$? If the boundary has fewer vertices and edges than the interior, then information is genuinely lost in the graph; if it has just as many, encoding is possible.
+
+\subsection{Consequence}
+
+The information paradox, in the photon-frame setting, is reformulated as an instance of \emph{boundary capacity}: how much incidence structure can the boundary of $\mathcal{G}_{\mathrm{int}}$ carry? This is a question the restricted theory is well-suited to ask: it requires no metric, no proper time, and no choice of frame outside the photon frames themselves. The classical Page-curve computation can be re-expressed in this language: the boundary grows as the interior is processed by outgoing edges, and the question is whether the boundary outpaces or lags the interior.
+
+What the photon-frame restriction buys here is the absence of the question ``what happens inside the horizon?''. In the restricted theory, the interior is just a subgraph; nothing more can be said about it, and nothing more needs to be.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Restricting a theory to photon reference frames discards the metric and the proper time, leaving only the lightlike relation of spacetime events. What remains is the lightlike graph $\mathcal{G}$, a combinatorial object whose vertices are emission and absorption events and whose edges are null photon worldlines. The theory built on this restriction is austere: it asks only questions of incidence, adjacency, and degree, and it refuses to invoke any structure that requires a frame other than that of the photon.
+
+We have cast three long-standing problems on this graph. Bell's theorem becomes a question of common ancestry in the graph: the entangled photons share a vertex, and this shared vertex is the only locality-relevant datum. The measurement problem becomes a question of branching at vertices with more than one legal outgoing edge; the ejector processes realising different branches are not represented in $\mathcal{G}$ at all. The black-hole information paradox becomes a question of boundary capacity, asking whether the boundary of the interior subgraph carries enough incidence structure to encode the interior.
+
+Each reformulation moves the original puzzle into a vocabulary in which photon frames are at home, but none of them dissolves the puzzle outright. What they provide is \emph{clarification}: by removing the metric and the proper time, the photon-frame restriction forces the underlying combinatorial structure of each problem to be made explicit, and in each case it turns out that the structure was already combinatorial. The restriction does not answer our physics questions; it teaches us to ask them differently.
+
+The most provocative direction suggested by the reformulations is the possibility that what we usually call the ``spacetime'' in which physics happens is, in fact, an artefact of the frames we choose to inhabit. From inside our matter-bound frames, with their nonzero proper times and finite distances, spacetime looks like a Lorentzian manifold. From inside the only frame in which emission coincides with absorption, spacetime looks like a graph. The two views are not contradictory; they are projections of the same physics onto different choices of vantage point. The lightlike graph is the projection that, by assumption, refuses all vantages except the one in which the vantage itself is a single photon.
+
+\end{document}

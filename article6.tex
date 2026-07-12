@@ -1,0 +1,260 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\newcommand{\ket}[1]{|#1\rangle}
+
+\geometry{margin=1in}
+
+\title{The Quantum Eraser on the Lightlike Graph:\\
+Does Photon-Frame Combinatorics Resolve a Paradox,\\
+or Merely Rephrase It?}
+\input{author}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The delayed-choice quantum eraser exhibits a striking asymmetry of temporal ordering: a measurement choice made on an idler photon strictly \emph{after} its entangled signal partner has been recorded appears to determine whether the signal history belongs to an interference pattern or to a particle-like distribution. We project the experiment onto the lightlike graph $\mathcal{G}$ developed in the companion papers, in which emission and absorption coincide as vertices and photon worldlines are directed edges. Two bookkeeping augmentations from article~5 --- pair tagging and a new \emph{future-tagging} of branched absorption vertices --- turn out to do genuine combinatorial work, and we argue that the apparent paradox softens into a question about which of several discrete graph completions is recorded as ``the'' completion. The resolution is partial: lightlike graph theory rephrases the question, forecloses the retrocausality reading, and brings the bookkeeping that the experiment actually uses (entangled pairs, delayed coincidence) into the formal vocabulary, but it leaves untouched the deeper question of why one completion is selected rather than another. The lightlike graph is therefore not a resolution of the paradox but a clarification of what the paradox was asking.
+\end{abstract}
+
+\section{Introduction}
+
+In the previous papers of this series we constructed a restricted theory in which the only primitive is the lightlike relation between emission and absorption events, and the resulting object of study is the \emph{lightlike graph} $\mathcal{G} = (V, E)$. We used $\mathcal{G}$ to recast Bell's theorem, the measurement problem, the black-hole information paradox, the Schr\"odinger--spacetime mismatch, the string-theory dispute, and, in article~5, the bookkeeping that is needed (or not needed) to make $\mathcal{G}$ talk about physically distinct objects.
+
+The delayed-choice quantum eraser (Scully--Dr\"uhl 1982, Kim et al.~1999) sits naturally within this series. It is a photon experiment with entangled pairs, a future measurement choice, and a coincidence-counting post-selection that makes the wave/particle behaviour of the signal photon depend on a setting the idler encounters strictly \emph{after} the signal has been recorded. It is, in short, an experiment in which the photon-frame restriction (no timelike primitives, only lightlike relations) is exactly what the phenomenon is doing: the experimenters talk about photons, lightlike trajectories, and joint coincidence counts, and they treat what happens at the future idler detector as a piece of bookkeeping.
+
+The question this paper asks is: \emph{does the lightlike-graph formalism clarify the paradox, resolve it, or fail to engage with it?} We will find that the formalism does two of the three. It rephrases the question in a vocabulary that makes the apparent retrocausality reading visibly incorrect: there is no influence propagating backward in $\mathcal{G}$, only a delayed bookkeeping of which entangled pair each detection event belongs to. But the formalism does not tell us \emph{why} a single detecide becomes one of two coincidence histograms rather than the other; that question remains outside the combinatorics, just as it does outside the conventional formalism. The lightlike graph, on the eraser, is a \emph{clarification}, not a \emph{resolution}.
+
+The plan is as follows. Section~\ref{sec:apparatus} reconstructs the canonical Kim-et-al.~apparatus on the bare graph, identifying the vertices, the edges, and the degree multisets. Section~\ref{sec:bookkeeping} applies the four labellings of article~5 to the apparatus and finds that two are genuinely productive (pair tagging and a refinement we call \emph{future tagging}) while the other two are mostly inactive. Section~\ref{sec:paradox-stripped} rephrases the four faces of the paradox in lightlike-graph terms and argues that the retrocausality reading collapses immediately. Section~\ref{sec:limits} registers what the formalism cannot do. Section~\ref{sec:conclusion} summarises.
+
+\section{The Apparatus on the Bare Graph}
+\label{sec:apparatus}
+
+\subsection{Vertices and Edges}
+
+The Kim-et-al.~delayed-choice quantum eraser begins with a pump laser incident on a non-linear crystal (BBO), where each pump photon undergoes spontaneous parametric down-conversion (SPDC) into an entangled pair of lower-energy photons, the \emph{signal} $s$ and the \emph{idler} $i$. The signal photon passes through a double slit and is recorded by a fixed detector $D_0$, while the idler photon encounters a Glan-laser prism $GL$ that routes it into one of two branches: ``Path A'', containing a second 50/50 beam splitter $BS$ and detectors $D_3$/$D_4$, or ``Path B'', containing its own beam splitter $BS'$ and detectors $D_1$/$D_2$. The four coincidence counts are denoted $R_{01}$, $R_{02}$, $R_{03}$, $R_{04}$.
+
+On the bare lightlike graph $\mathcal{G} = (V, E)$, each photon contributes one directed edge from its emission vertex to its absorption vertex. The corpus of photons under consideration --- the entangled pairs produced by the SPDC crystal --- yields a graph in which:
+
+\begin{itemize}
+    \item One emission vertex $S$ corresponds to the SPDC event.
+    \item Two absorption vertices $A_{\text{left}}$ and $A_{\text{right}}$ correspond to the signal photon being absorbed at $D_0$ after crossing the left or right slit, respectively.
+    \item Two absorption vertices for the idler photon in Path A, $B_3$ and $B_4$, correspond to detections at $D_3$ and $D_4$.
+    \item Two absorption vertices in Path B, $B_1$ and $B_2$, correspond to detections at $D_1$ and $D_2$.
+\end{itemize}
+
+Each entangled pair contributes two directed edges: the signal edge $(S, A_{\text{left}})$ or $(S, A_{\text{right}})$ and the idler edge $(S, B_1)$, $(S, B_2)$, $(S, B_3)$, or $(S, B_4)$. The signal edge and the idler edge of a given pair share the same emission vertex $S$; their respective absorption vertices are spacelike-separated.
+
+A single pair, considered in isolation, contributes a small star-shaped subgraph with one emission vertex of out-degree two and four potential absorption vertices (`left' or `right' on the signal side, $1, 2, 3$, or $4$ on the idler side), and the legal absorption on the signal side is in principle any of the two slits. The corpus of all emitted pairs contributes a disjoint union of such stars.
+
+\subsection{Diagrams}
+
+A single pair, with the idler path chosen, can be drawn:
+\begin{center}
+\begin{tabular}{c}
+$A_{\text{left}} \leftarrow S \rightarrow B_1$ \\[4pt]
+$A_{\text{right}} \leftarrow S \rightarrow B_2$
+\end{tabular}
+\end{center}
+and, with the idler routed through Path A,
+\begin{center}
+\begin{tabular}{c}
+$A_{\text{left}} \leftarrow S \rightarrow B_3$ \\[4pt]
+$A_{\text{right}} \leftarrow S \rightarrow B_4$
+\end{tabular}
+\end{center}
+The bare graph, restricted to a single pair, is a single star out of the source $S$. A corpus of pairs is a disjoint union of such stars.
+
+\subsection{What the Bare Graph Records and What It Does Not}
+
+The bare graph records, for each pair, that the signal and idler edges have a common emission. It does \emph{not} record:
+
+\begin{enumerate}
+    \item That the two edges of a given star belong to the same entangled pair rather than to two independent emissions from $S$.
+    \item Which path the idler took (Path A or Path B), since paths through $GL$, $BS$, and $BS'$ are not vertices in $\mathcal{G}$ --- they are macroscopic pieces of apparatus, not emission/absorption events.
+    \item The coincidence relation between a particular signal absorption and a particular idler absorption, since coincidences are a temporal relation enforced by the electronics, not a feature of the graph itself.
+\end{enumerate}
+
+Each of these three omissions is exactly the kind of thing the article-5 bookkeeping was designed to address. We therefore proceed to the bookkeeping.
+
+\section{Bookkeeping}
+\label{sec:bookkeeping}
+
+\subsection{Identity Tagging}
+
+A \emph{photon-identity labelling} $\iota : E \to \mathcal{I}$ gives a unique tag to each photon. The signal photon of pair $\alpha$ receives $\iota(s_\alpha) = s_\alpha$ and the idler photon of pair $\alpha$ receives $\iota(i_\alpha) = i_\alpha$.
+
+In the Kim-et-al.~apparatus, every photon has a natural identity: it is \emph{one of} the photons emitted by a pump pulse, tracked through the apparatus. The identity labelling is projectable: the bare graph has two distinguishable edges out of $S$ for every pair (one labelled by its head $A_{\text{left}}$ or $A_{\text{right}}$, one labelled by $B_k$ for some $k$), so the identity is at least implicit in the head. The labelling makes the identity explicit and available for combinatorial manipulation. We classify identity tagging as \emph{cosmetic but useful}: the bare graph does not strictly need it, but the experimenters \emph{use} it, and the formalism should reflect that.
+
+\subsection{Pair Tagging}
+
+A \emph{pair labelling} $\pi : E \to \mathcal{P}$ assigns to each edge the entangled pair to which the photon belongs. For the SPDC-photon pairs, $\pi(s_\alpha) = \pi(i_\alpha) = \alpha$.
+
+Pair tagging is, on the bare graph, the productive labelling. The bare graph can record that the two outgoing edges of $S$ belong to the same emission \emph{only} by tagging the pair. Without pair tagging, the bare graph has no combinatorial feature that says ``these two edges are partners in an entangled pair''; the partition of $E$ by $\pi$ is precisely the partition the experiment needs. This is the \emph{yes-yes} verdict: pair tagging is projectable and it does genuine combinatorial work.
+
+The audit's verdict: pair tagging is essential.
+
+\subsection{Object Tagging}
+
+A \emph{physical-object labelling} $\sigma : V \to \mathcal{O}$ assigns to each vertex the macroscopic apparatus at which the event occurs. In the Kim-et-al.~apparatus, $\sigma$ would tag $S$ as the BBO crystal, $A_{\text{left}}$ and $A_{\text{right}}$ as $D_0$, the four $B_k$ as the four detectors $D_k$, and so on. The Glan-laser prism and the two beam splitters, $GL$, $BS$, and $BS'$, do not appear as vertices because no emission/absorption event happens at them: they are \emph{present but combinatorially invisible}.
+
+This is a feature of the bookkeeping, not a bug. The bare graph is a record of lightlike events; an apparatus that interacts with photons without emitting or absorbing them (and without being entered by any photon) has no place in $\mathcal{G}$. To record the apparatus, one would have to introduce a new bookkeeping that, e.g., tags absorption vertices with the detector that performed the recording --- which is what object tagging does. With object tagging, the experimenter can identify which detector produced each coincidence count.
+
+We classify object tagging as \emph{cosmetic} for the bare graph, but genuinely useful when the experimenters want to know which vertex corresponds to which detector. The productive work is in the labelled graph, but the labels themselves are well-defined.
+
+\subsection{Region Tagging}
+
+A \emph{region labelling} $\rho : V \to \mathcal{R}$ assigns to each vertex the spacetime region in which it occurs. In the eraser, the relevant regions are ``near the crystal'' (around $S$), ``near the screen'' (around $A_{\text{left}}$ and $A_{\text{right}}$), and ``near the choice apparatus'' (around each of the $B_k$). The future light cone of the signal absorption contains all four idler detectors; the past light cone of the idler absorption contains the crystal.
+
+Region tagging is productive in the same sense as in the information paradox and T-duality problem: it makes explicit the region-tag partition of $V$, which the bare graph cannot express directly. The interesting regions for the eraser are the screen region (where $D_0$ is) and the choice region (where $GL$/$BS$/$BS'$ and $D_k$ are). The region tags make explicit which vertices lie in whose past/future light cone --- a piece of information the experiment rests on, and which the bare graph does not encode.
+
+We classify region tagging as \emph{productive} for the eraser, in the same sense as productive for the information paradox: it converts a piece of structure that is supported but not recorded by the bare graph into an explicit feature of the labelled graph.
+
+\subsection{A New Bookkeeping: Future Tagging of Branched Absorptions}
+
+The four faces of the paradox share one structural feature that is not captured by any of the four labellings of article~5: the choice of GL is made in the future light cone of the signal absorption. The bare graph records both the signal edge and the idler edge of any given pair; the question of which path the idler takes is, on the bare graph, a question about which absorption vertex the idler photon reaches. The bookkeeping does not record \emph{which} of the four idler vertices is reached for a given pair until the post-selection step.
+
+We introduce a fifth labelling, special to time-asymmetric situations: \emph{future tagging} of branched absorption vertices. A branched absorption vertex is an absorption vertex $v$ such that, conditional on the photon reaching $v$ at all, the future of the corpus admits several incompatible completions. In the eraser, the signal absorption $A_{\text{left}}$ or $A_{\text{right}}$ at $D_0$ may combine with any of the four idler detector clicks to form a coincidence. Future tagging writes, at each such absorption vertex, the set of permitted future completions.
+
+A future tagging is, in effect, a higher-order map
+\[
+\phi : V \to \mathcal{P}(\mathcal{P}(E)),
+\]
+where $\mathcal{P}(E)$ is the power set of edges. The first power set collects the allowed future completions; the second records that the future is itself a branching set.
+
+In the eraser, future tagging is \emph{productive}: the bare graph does not record that the signal absorption at $A_{\text{left}}$ admits a coincidence with each of $B_1, B_2, B_3, B_4$. With future tagging, this is explicit, and the question of ``which of these is real for a given pair'' becomes a precise combinatorial choice.
+
+We will use future tagging in Section~\ref{sec:paradox-stripped} to rephrase the paradox.
+
+\subsection{Summary of Bookkeeping Verdicts}
+
+The bookkeeping verdicts for the eraser arrange themselves as follows:
+\begin{center}
+\begin{tabular}{lcc}
+                              & \textbf{Bare graph?} & \textbf{Productive for the eraser?} \\ \hline
+Identity (article 5)          & cosmetic & cosmetic-but-useful \\
+Pair (article 5)              & inactive & productive \\
+Object (article 5)            & cosmetic & cosmetic-but-useful \\
+Region (article 5)            & inactive & productive \\
+\textit{Future} (this article) & inactive & productive
+\end{tabular}
+\end{center}
+The productive entries are pair tagging, region tagging, and future tagging. Of these, the pair tagging is the bookkeeping the experimenters use \emph{unconsciously}: they produce entangled pairs and keep track of them by coincidence counting. Region tagging is the bookkeeping the experiment uses \emph{consciously}: the apparatus is laid out in spacetime, and the future light cone of the signal detector contains the idler detectors by design. Future tagging is the bookkeeping that the eraser paradox needs but that the bare graph does not provide.
+
+\section{The Paradox, Stripped}
+\label{sec:paradox-stripped}
+
+We rephrase the four faces of the paradox enumerated in the task description, in each case translating the vocabulary from quantum mechanics into lightlike-graph combinatorics.
+
+\subsection{Face 1: Retrocausality in Appearance}
+
+The verbal claim: ``a measurement choice made strictly \emph{after} an event appears to determine which kind of pattern that earlier event belongs to.''
+
+On the bare graph with pair, region, and future tagging, the claim becomes: for a given entangled pair $\alpha$, the signal edge $(S, A_{\text{left}})$ (or $(S, A_{\text{right}})$) is paired with the idler edge $(S, B_k)$ for some $k$. The pairing is realised by the coincidence counter, which sorts signal absorptions by the corresponding idler absorption. Whether the coincidence falls in $R_{03}$/$R_{04}$ (interference visible) or $R_{01}$/$R_{02}$ (no interference) is determined by which $k$ the idler photon reached, which in turn is determined by whether the apparatus was configured in Path A or Path B.
+
+In the photon-frame restriction, there is no concept of \emph{earlier} or \emph{later} that is not a feature of the embedding. On $\mathcal{G}$, every vertex is just a vertex, and every edge is just an edge, and the question of which vertex came ``first'' is decided by an embedding in Minkowski space --- which the photon-frame restriction discards. The statement that the idler detector click ``happens after'' the signal detector click is a feature of the embedding, and the photon-frame restriction treats the embedding as external.
+
+Therefore, the retrocausality reading requires an embedding. Without an embedding (or with only an embedding-relative ordering), the idler click is no more in the future of the signal click than it is in the past --- they are both vertices of the graph, related by the fact that they share an emission vertex and are part of the same entangled-pair label.
+
+The question, then, is not whether the future influences the past --- the future and past are features of the embedding, and the experiment does not require a future/past interpretation --- but whether the combinatorial structure of the graph (in particular, the partition of $E$ by $\pi$ and the choice of idler absorption vertex for each pair) is well-defined without such an interpretation. The lightlike graph answers: \emph{yes}, the combinatorial structure is well-defined. There is no retrocausality in the photon-frame restriction because there is no temporal ordering.
+
+\subsection{Face 2: No True Retrocausality}
+
+The verbal claim: ``no single D0 click ever carries a fringe by itself; only the conditional distribution, sorted after the fact by the idler result, shows interference. No superluminal signaling or information transfer from the idler back to the signal is possible.''
+
+On the lightlike graph with bookkeeping, this claim becomes: the bare graph restricted to the signal edges and ignoring the idler pairing is a graph in which each signal absorption vertex $A_{\text{left}}$ or $A_{\text{right}}$ has in-degree one from a single photon, with no internal structure encoding interference. The interference structure visible in $R_{03}$/$R_{04}$ is not a feature of the signal subgraph --- it is a feature of the partition of $E$ by $\pi$ (the entangled-pair structure) combined with the idler-absorption choice.
+
+In the tagged graph, the ``interference'' is a feature of the tagged subgraph
+\[
+\widehat{\mathcal{G}}^{\,A} \;=\; \bigl(V, \{e \in E : \pi(e) = \alpha \text{ and } e \text{ has idler head in } \{B_3, B_4\}\}\bigr),
+\]
+i.e., the tagged subgraph consisting of edges whose pair is ``$\alpha$'' and whose idler head is in the Path-A detectors. The signal-only subgraph
+\[
+\mathcal{G}^{\,s} \;=\; \bigl(V, \{e \in E : e \text{ is a signal edge}\}\bigr)
+\]
+has no interference structure encoded in it: it is just a bipartite subgraph of the corpus.
+
+In the photon-frame restriction, ``superluminal signalling'' is a concept that requires a Lorentz structure, and the bare graph has no Lorentz structure. The notion that some signal travels faster than light is, in the photon frame, trivially satisfied or trivially violated depending on the embedding, but is not a constraint of the formalism itself. The claim that no information is transferred backward in time is, on the lightlike graph, the claim that the tagged subgraph $\widehat{\mathcal{G}}^{\,A}$ contains no edges that ``would have to be modified'' by the tag being assigned after the signal has been absorbed. Since the tag is read off the idler absorption, and the idler absorption is recorded whether or not it later falls into a coincidence histogram, the tagging is in fact done before, during, or after the signal recording depending on the embedding --- but the tagged graph itself is well-defined independently of embedding.
+
+\subsection{Face 3: What is Real Before the Choice?}
+
+The verbal claim: ``quantum observables do not have well-defined values until the appropriate measurement context is established, and the choice can be in the future light cone.''
+
+On the lightlike graph with future tagging, this becomes a precise combinatorial question. The signal absorption vertex $A_{\text{left}}$ has, in the future-tagging $\phi$, the set of permitted future completions
+\[
+\phi(A_{\text{left}}) = \bigl\{\{B_1\}, \{B_2\}, \{B_3\}, \{B_4\}\bigr\},
+\]
+the four possible idler completions. The signal edge by itself does not specify which of these four completions is realised. Whether the entangled pair $\alpha$ contributes to $R_{01}$ (interference absent), $R_{02}$ (absent, opposite slit), $R_{03}$ (fringe up), or $R_{04}$ (fringe down) is a question about which of the four idler vertices is the head of the idler edge for $\alpha$.
+
+The photon-frame restriction observes that the question ``which of the four is real for a given $\alpha$'' has no answer on the bare graph and no answer on the tagged-with-pair graph alone: the bare graph has four idler edges per pair, but does not say which one is realised; the tagged-with-pair graph knows the pair exists, but still does not commit to which idler absorption is real for that pair. The information needed is \emph{which coincidence count} the experimenter assigns the pair to, which is itself a piece of bookkeeping done by the coincidence counter after both signal and idler events have occurred.
+
+In this respect, the lightlike graph does \emph{not} resolve the question of what is ``real before the choice''. The future-tagging makes explicit that the four completions are \emph{all} permitted by the data available prior to the coincidence count, but it does not say which one is real. The combinatorics records that something must be selected; the formalism is silent on what selects it.
+
+This is consistent with the predicted resolution of the paradox in the standard literature (which says that the experiment does not display retrocausality because the conditional distribution is what carries the interference, not the unconditional signal). But the lightlike graph makes the corresponding statement in a different vocabulary: the question of which completion is real is a question the formalism records but does not answer.
+
+\subsection{Face 4: Complementarity Under Stress}
+
+The verbal claim: ``Bohr's complementarity still holds, but the criterion for which description applies can be decided after the system has already done something.''
+
+On the lightlike graph, the ``criterion'' is the idler-branch choice, i.e., the absorption vertex of the idler photon for a given entangled pair. The ``system doing something'' is the signal photon being absorbed at $D_0$, which corresponds on $\mathcal{G}$ to the head of the signal edge for that pair being $A_{\text{left}}$ or $A_{\text{right}}$. The question of which description applies (wave, with interference; particle, no interference) is, on the lightlike graph, the question of which coincidence histogram the pair is sorted into, which is itself a question of which idler absorption vertex $B_k$ the idler edge has.
+
+The photon-frame restriction translates ``wave vs particle'' into a partition of the tagged graph: the pairs in Path A yield interference in coincidence, the pairs in Path B yield no interference. The two descriptions are mutually exclusive because the idler can be routed to one path, not both --- Particle and Wave are exclusive edges, not exclusive states of a single edge.
+
+The complementarity is therefore not stressed but \emph{sharpened}: the formalism makes explicit that the description is pegged to the path of the idler, which is a combinatorial feature of the tagged graph.
+
+\subsection{Summary}
+
+The four faces of the paradox, translated:
+\begin{enumerate}
+    \item Retrocausality: not present, because the photon-frame restriction has no embedding-relative ordering.
+    \item No real retrocausality: confirmed, because the tagged-conditional subgraph structure encodes the interference.
+    \item Real-before-the-choice: combinatorial witness exists (the future-tagging), but the formalism does not say which completion is selected.
+    \item Complementarity: sharpened, not stressed.
+\end{enumerate}
+The lightlike graph softens the paradox into a question about discrete completions of a tagged graph. It does not say what selects a completion, but it says what a completion is.
+
+\section{Limits of the Lightlike-Graph Treatment}
+\label{sec:limits}
+
+The lightlike graph, applied to the eraser, leaves three questions unanswered.
+
+\subsection{The Selection Question}
+
+The future-tagging $\phi(v)$ records, for each branched absorption vertex, the set of permitted future completions. For a given entangled pair $\alpha$, only one completion is realised. The formalism records that exactly one is realised; it does not specify which one, nor why. This is, in the standard literature, the question of what the coincidence counter does, or equivalently, the question of what a measurement is. Article~3 connected the measurement problem to the discreteness of the graph completion; the eraser is one application of that discreteness.
+
+The lightlike graph is therefore an \emph{aid} to the measurement problem, not a resolution of it. The eraser does not pose, on the lightlike graph, the further question of why completions are discrete; it inherits that question from the formalism.
+
+\subsection{The Dynamics of Branching}
+
+Branched absorption vertices arise because the apparatus can route a photon in several ways. On the lightlike graph, the branching is a combinatorial feature, not a dynamical one: the formalism records the partition of possible completions but does not say \emph{how} the photon is routed. Beam splitters, mirrors, prisms --- all the apparatus around the branching --- are invisible to the bare graph because no emission/absorption event happens at them. They could be recorded by an object tagging, but only as bookmarks on the absorption vertices downstream of them, not as vertices in their own right.
+
+The result is a contrast with the standard treatment, in which the beam splitters are physical objects whose behaviour is governed by quantum mechanics or classical electrodynamics. The lightlike graph does not deny this; it merely abstracts the apparatus out of the formalism. The price is that the question of \emph{how} the photon is routed is not a question the formalism answers.
+
+\subsection{Statistical Character of the Histograms}
+
+The histograms $R_{0k}$ are statistical: they are sums over many entangled pairs, sorted by coincidence. The bare graph records one entangled pair per set of edges, and the future-tagging $\phi$ records the set of possible completions. The histogram is a function of many realisations of $\phi$, not of a single one. The lightlike graph is, in this respect, a formalism about individual pairs, not ensembles. There is a translation step between the formalism and the histograms, and that translation is statistical.
+
+This is the same translation step that the lightlike graph requires for any statistical experiment: the formalism records the combinatorial structure of one realisation, and the statistics are aggregates over many realisations. The translation is missing from the formalism. This is a feature of the formalism, not a bug: the combinatorics is finitely precise, and statistics is one application of the combinatorics.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have projected the delayed-choice quantum eraser onto the lightlike graph and asked whether the photon-frame combinatorics resolves the paradox, fails to engage it, or clarifies it. The answer is the third.
+
+The lightlike-graph formalism makes two genuine contributions. First, by restricting attention to the lightlike relation between emission and absorption events, the formalism discards the embedding-relative ordering that makes ``the future influences the past'' a coherent-sounding reading of the experiment. Without an embedding, there is no temporal ordering, and therefore no retrocausality in the formalism. The retrocausality reading collapses immediately when the formalism is applied.
+
+Second, the bookkeeping introduced in article~5 --- particularly \emph{pair tagging} and the new \emph{future tagging} introduced here --- makes the combinatorial structure of the experiment explicit. Pair tagging records the entangled-pair structure that the coincidence count relies on. Future tagging records the set of possible completions at each branched absorption vertex. Without these two, the bare graph is silent about the entanglement structure and the branching structure; with them, the tagged graph encodes both in purely combinatorial terms.
+
+The lightlike-graph formalism does not resolve the paradox. It cannot, because the paradox contains a question the formalism does not ask. The question is: \emph{why does one particular completion get selected for each entangled pair?} The formalism records the question (via future tagging) and even makes precise the combinatorial content of any answer (a particular idler absorption vertex $B_k$, fixed for each pair). But it does not answer it. The selection question is, in the language of article~3, the question of wave-function collapse: which of several legal completions is real?
+
+The verdict is therefore that the lightlike-graph treatment of the eraser is a \emph{clarification}, not a \emph{resolution}. The retrocausality reading is shown to depend on the embedding, which the photon-frame restriction discards; the complementarity reading is sharpened by translation into a combinatorial distinction; the no-real-retrocausality reading is confirmed by the tagged-conditional subgraph structure. But the deeper question of what selects a completion is left untouched.
+
+In the spirit of the previous papers, this is a partial answer. The lightlike graph is not the resolution of the quantum eraser: it is the formal setting in which the genuine question becomes clear.
+
+\end{document}

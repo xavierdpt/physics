@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\newcommand{\ket}[1]{|#1\rangle}
+
+\geometry{margin=1in}
+
+\title{Toward a Unified Theory:\\
+Schr\"odinger, Spacetime, and the Lightlike Graph}
+\input{author}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Quantum mechanics and general relativity rest on incompatible pictures of time. The time-dependent and time-independent Schr\"odinger equations treat time as a distinguished external parameter, while general relativity binds time to geometry in the form of spacetime. The mismatch is usually papered over by treating quantum mechanics as a theory of states on a fixed spacetime background, but the cost of doing so is the open problem of wave-function collapse and the unresolved status of the ``observer''. We propose that, as in the companion papers, restricting attention to the lightlike graph softens the mismatch: the two Schr\"odinger equations both become statements about graph incidence --- one about the existence of an edge, the other about the topology of its endpoints --- and the observer becomes a vertex in the graph rather than a frame-bound external agent. We argue that this is the right vantage point from which to begin searching for a unification.
+\end{abstract}
+
+\section{Introduction}
+
+In two companion papers we argued that the only physical reference frames that need be taken seriously are the photon frames, and that restricting attention to these frames discards the metric while preserving the combinatorial topology of causal relations. What remains is the \emph{lightlike graph} $\mathcal{G} = (V, E)$, whose vertices are emission and absorption events and whose edges are null photon worldlines. We used this object to recast three well-known puzzles --- Bell's theorem, the measurement problem, and the black-hole information paradox --- and in each case found that the original contradiction softened into a question about graph topology.
+
+The present paper attempts a more ambitious move. The claim is that the apparent incompatibility between quantum mechanics and general relativity is, in substantial part, an artefact of the frames we have insisted on inhabiting --- frames with finite proper time and Lorentzian metric --- and that the restriction to photon frames brings the two theories into a vocabulary in which their deeper structural commonality becomes visible. The thesis is that \emph{the lightlike graph is the right object on which to seek unification}.
+
+The argument proceeds in three stages. Section~\ref{sec:schrodinger} recalls the two forms of the Schr\"odinger equation --- the time-dependent and the time-independent --- and observes that both already look combinatorial when read on a graph. Section~\ref{sec:mismatch} makes explicit the mismatch with general relativity: time as a parameter versus time as a coordinate on spacetime. Section~\ref{sec:collapse} addresses the problem of wave-function collapse and the role of the observer, recasting both on the lightlike graph. Section~\ref{sec:unification} sketches how the resulting reformulation provides a candidate common ground for unification.
+
+\section{The Two Schr\"odinger Equations}
+\label{sec:schrodinger}
+
+\subsection{The Time--Dependent Equation}
+
+The Schr\"odinger equation in its time-dependent form governs the evolution of a quantum state $\ket{\psi(t)}$ on a Hilbert space, with time $t$ playing the role of an external parameter:
+\begin{equation}
+i\hbar\,\frac{\partial}{\partial t}\,\ket{\psi(t)}
+\;\:=\;\:
+\hat{H}\,\ket{\psi(t)}.
+\label{eq:tdse}
+\end{equation}
+The Hamiltonian $\hat{H}$ is Hermitian, and the evolution it generates is unitary. Time here is, explicitly, not a coordinate on a spacetime; it is a label on a one-parameter family of states. The equation can be solved formally, given $\hat{H}$ and an initial state, as
+\begin{equation}
+\ket{\psi(t)} \;\:=\;\: e^{-i\hat{H}t/\hbar}\,\ket{\psi(0)}.
+\label{eq:evolution}
+\end{equation}
+
+\subsection{The Time--Independent Equation}
+
+The Schr\"odinger equation in its time-independent form is the eigenvalue problem that arises when one separates variables, assuming a stationary state $\ket{\psi(t)} = e^{-iEt/\hbar}\,\ket{\phi}$:
+\begin{equation}
+\hat{H}\,\ket{\phi} \;\:=\;\: E\,\ket{\phi}.
+\label{eq:tise}
+\end{equation}
+Here $E$ is the energy of the state, and $\ket{\phi}$ is a stationary state of definite energy. Equation~\eqref{eq:tise} is not an evolution equation: it is a \emph{selection} principle, a statement about which states are \emph{allowed} by the Hamiltonian.
+
+\subsection{Two Complementary Pictures}
+
+Equations~\eqref{eq:tdse} and~\eqref{eq:tise} are not independent. The time-dependent equation produces the dynamics; the time-independent equation asks what states are worth labelling with a definite energy. They are the two faces of a single theory: a dynamic face and a structural face.
+
+What is striking, for our purposes, is that \emph{neither} equation refers to spacetime. Both refer only to a Hilbert space, a Hamiltonian, and (in the first case) a parameter we call time. Geometry, distance, curvature, and proper time are nowhere in the formulation. Quantum mechanics, on its own terms, is not a theory of spacetime.
+
+\section{The Mismatch with Spacetime}
+\label{sec:mismatch}
+
+\subsection{General Relativity as a Theory of Spacetime}
+
+General relativity treats time as a coordinate on a four-dimensional Lorentzian manifold $(M, g_{\mu\nu})$. The metric is dynamical, governed by the Einstein field equations
+\begin{equation}
+G_{\mu\nu} + \Lambda\,g_{\mu\nu} \;\:=\;\: \frac{8\pi G}{c^{4}}\,T_{\mu\nu},
+\label{eq:efe}
+\end{equation}
+and matter propagates along geodesics of the metric. Time is bound to space: there is no global notion of time independent of the geometry, and the causal structure of spacetime is fixed by the lightlike intervals of the metric.
+
+\subsection{The Two Times}
+
+The mismatch between quantum mechanics and general relativity reduces, on inspection, to a question of what ``time'' means. In quantum mechanics, time is the external parameter of the unitary evolution~\eqref{eq:tdse}. In general relativity, time is one of four coordinates that label events on a Lorentzian manifold, and it is intrinsically tied to the metric. These two uses of the word are not the same, and they cannot both be fundamental.
+
+\subsection{The Conventional Reconciliation}
+
+The standard move is to regard quantum mechanics as a theory of states on a fixed spacetime background, leaving the metric classical and treating the Schr\"odinger equation as a partial differential equation in the coordinates of that background. This is the regime of quantum field theory. The cost is that the dynamics of the metric --- gravity --- is left out: it cannot be quantised by the same machinery without producing infinities that resist renormalisation. Conversely, the move of quantising gravity by promoting $g_{\mu\nu}$ to an operator produces a quantum theory whose time is, again, the external parameter of Schr\"odinger evolution --- but now applied to a geometric object, with no obvious ``background'' time to serve as the parameter. The two pictures turn out to ill fit each other.
+
+\subsection{Diagnosis}
+
+The diagnosis we offer is that the mismatch is real but local: it is the mismatch between \emph{frames with finite proper time} and \emph{the frame with vanishing proper time}. The Schr\"odinger evolution uses a parameter that requires an inertial frame --- or at least a frame in which there is a tidy notion of ``time flow'' --- and the Schr\"odinger eigenvalue problem uses an energy that requires a notion of time-translation invariance. Both presuppose a frame in which proper time is non-zero.
+
+The lightlike graph has no proper time. In this object, time disappears entirely as a primitive, and the two Schr\"odinger equations must be reformulated without it. The claim is that doing so is not a loss but a clarification.
+
+\section{Cast on the Lightlike Graph}
+\label{sec:cast}
+
+\subsection{The Time--Independent Equation as a Selection of Edges}
+
+Consider the time-independent Schr\"odinger equation~\eqref{eq:tise}. On the lightlike graph $\mathcal{G}$, a stationary state is, by analogy, a state whose existence does not depend on the order in which its edges are traversed. The eigenvalue problem becomes the question: \emph{which edges can be present in a consistent lightlike graph?} This is a question about the incidence structure of $\mathcal{G}$.
+
+More precisely, suppose a photon $p_i$ is associated with an eigenstate of some local operator, contributing an edge $(E_i, A_i)$ to $E$. The ``Hamiltonian'' is then a set of local constraints on which edges can share a common emission or absorption vertex, and the eigenvalue problem~\eqref{eq:tise} is the selection of which edges are permitted at all. Allowed edges form a sub-graph $\mathcal{G}_{\mathrm{allowed}} \subseteq \mathcal{G}$.
+
+This reformulation strips the time-independent equation of its dynamical content and reads it as a constraint of existence: a stationary state is the \emph{combinatorial shape} of a photon interaction, not a wave function in time.
+
+\subsection{The Time--Dependent Equation as a Walk}
+
+Consider the time-dependent Schr\"odinger equation~\eqref{eq:tdse}. On the lightlike graph, evolution in time has no representation, since the graph has no proper time. The dynamic content of the equation must instead be read as a question about \emph{traversals}: the unit of evolution is one photon being emitted and absorbed, contributing one edge to $\mathcal{G}$ and one step in any walk that traces out a path through the corpus.
+
+In this language, a quantum evolution
+\begin{equation}
+\ket{\psi(t)} \;\:=\;\: e^{-i\hat{H}t/\hbar}\,\ket{\psi(0)}
+\label{eq:evolution-again}
+\end{equation}
+becomes a sequence of edge-additions
+\begin{equation}
+\mathcal{G}_0 \;\to\; \mathcal{G}_1 \;\to\; \mathcal{G}_2 \;\to\;\cdots,
+\label{eq:graph-walk}
+\end{equation}
+each step adding the next edge of a photon trajectory consistent with the Hamiltonian as a local constraint. The unitary evolution operator $e^{-i\hat{H}t/\hbar}$ becomes a transition rule between successive lightlike graphs, each of which is a snapshot of the lightlike data.
+
+This is not the same as a graph-to-graph mapping in the usual sense, because the parameter $t$ that we have discarded is the very thing that would have indexed the sequence. Without it, we have a sequence of states but no privileged indexing of the sequence. The Hamiltonian $\hat{H}$ is replaced by a \emph{set of transition rules}, and the dynamics is recast as a discrete evolution of the graph.
+
+\subsection{Consequence for the Mismatch}
+
+The mismatch between quantum mechanics and spacetime was, in the previous section, traced to the fact that time plays different roles in the two theories. On the lightlike graph, both roles are gone. There is no external time parameter of evolution, and there is no coordinate time on a Lorentzian background. What remains is the discrete succession $\mathcal{G}_0 \to \mathcal{G}_1 \to \cdots$ of graphs, each a static object, related to the next by a local transition rule.
+
+The cost is that we have lost the fractional structure of $t$ --- we cannot speak of ``halfway through the evolution'', because the photon-frame restriction has identified all proper times to zero. The benefit is that we have replaced the mismatch with a single combinatorial object: the sequence of graphs.
+
+\section{Wave-Function Collapse and the Observer}
+\label{sec:collapse}
+
+\subsection{The Problem}
+
+In the standard quantum-mechanical story, a system evolves unitarily under $\hat{H}$ until it interacts with a measurement apparatus, at which point its wave function ``collapses'' to a definite eigenstate. The collapse is non-unitary, instantaneous, and requires an ``observer'' to be defined. The standing interpretations of quantum mechanics --- Copenhagen, many-worlds, de~Broglie--Bohm --- each supply a different account of what an observer is and how collapse happens, and none of them is fully satisfactory.
+
+General relativity makes the situation worse. If the observer is a physical system, then the observer lives in spacetime and has a worldline, and the collapse happens at some event on that worldline. But the unitary evolution that led to that event is an evolution on Hilbert space, parameterised by an external time, and the geometry of the worldline is governed by a metric --- the same metric whose dynamics the quantisation of gravity is supposed to explain. The two stories are stitched together at the observer, and the stitching is not clean.
+
+\subsection{The Observer as a Vertex}
+
+In the lightlike graph, the observer is \emph{not} an external frame-bound agent. The observer is a vertex --- typically, an absorption vertex. To observe a photon is, in this language, to be the absorption vertex of that photon's worldline. Every observable, by this reckoning, is a vertex with the photon-edge terminating at it.
+
+This has two consequences.
+
+First, every measurement is a \emph{local event in the graph}: it is the production of a vertex with a particular in-degree. The ``outcome'' of the measurement is the count of edges terminating at that vertex, together with their incident labels. Observables are not abstract Hermitian operators; they are vertex degrees and their associated data.
+
+Second, the observer does not stand outside the quantum system. The observer's worldline is made of photon absorptions and emissions, just like any other physical process. The observer is a vertex built out of the same kind of elementary operations as the system being observed; the distinction between observer and observed is a question of subgraph structure within $\mathcal{G}$, not a metaphysical divide.
+
+\subsection{Collapse as a Branching}
+
+The lightlike graph has, as observed in the companion paper, the property that a single emission can have more than one legal absorption vertex --- and hence more than one legal completion. A photon $p$ in superposition, incident on a detector with two click-channels $C_1$ and $C_2$, produces two possible lightlike completions $\mathcal{G}_1$ and $\mathcal{G}_2$ of the graph.
+
+Wave-function collapse is, in this language, the selection of one of these completions. The selection is not an event with a duration in any proper time, because the graph has no proper time: it is a discrete choice between two graphs that are mutually exclusive. The two graphs $\mathcal{G}_1$ and $\mathcal{G}_2$ are both consistent with the lightlike data available prior to the observation; the observation is what \emph{specifies} which one is real.
+
+What the photon-frame restriction buys, here, is the \emph{discreteness} of collapse. There is no continuous evolution from superposition to eigenstate, because there is no proper time in which such an evolution could unfold. The collapse is instantaneous in the only sense the graph can support: it is the realisation of one of the discrete completions.
+
+\subsection{Consequence}
+
+The problem of wave-function collapse and the problem of the observer are, in the standard story, two problems. On the lightlike graph, they are one problem with two aspects: both are questions about which discrete graph completion is realised, and the observer is the vertex at which the realisation is recorded. The two problems do not collapse into one another entirely --- there are still questions about how the realisation occurs --- but the locus of these questions is now a single combinatorial object.
+
+\section{Toward Unification}
+\label{sec:unification}
+
+\subsection{The Common Ground}
+
+What the photon-frame restriction offers is a \emph{common ground} between quantum mechanics and general relativity in which the disagreement about time is dissolved. The lightlike graph has no proper time on which to disagree. Spacetime geometry is replaced by combinatorial incidence, and the unitary evolution of Hilbert space is replaced by a discrete succession of graph completions.
+
+The cost is a familiar one: we have discarded the metric, the proper time, and the smooth geometry, and replaced them with a combinatorial object. We have gained a setting in which the two theories speak the same language: the language of vertices, edges, and the rules by which graphs extend one another.
+
+\subsection{An Open Programme}
+
+This is not a unification. It is a change of vantage point from which a unification might be sought. To unify quantum mechanics and general relativity is to find a single mathematical object in which both make sense. The candidate we have offered is the lightlike graph, equipped with a transition rule between successive graphs. The transition rule is the heir of the Schr\"odinger evolution; the graph itself is the heir of spacetime.
+
+What we have done in this paper is only the first step. We have shown that:
+\begin{itemize}
+    \item The time-independent Schr\"odinger equation reads, on the lightlike graph, as a constraint of existence on edges.
+    \item The time-dependent Schr\"odinger equation reads, on the lightlike graph, as a rule for extending the graph one edge at a time.
+    \item The collapse of the wave function reads, on the lightlike graph, as the selection of one of several mutually exclusive graph completions.
+    \item The observer reads, on the lightlike graph, as the absorption vertex at which the completion is recorded.
+\end{itemize}
+Each of these reformulations dissolves one of the standard conceptual difficulties of finding a common footing for the two theories, by removing the spacelike/timelike distinction that has historically made quantum gravity hard.
+
+\subsection{What Remains to be Done}
+
+The reformulations are not a theory. They are a vocabulary. To turn them into a theory, we must specify the transition rules between successive graphs. These rules are the mathematical content that, in a more conventional language, would be the Hamiltonian and the path integral. We have not specified them here, only outlined the constraints they would have to satisfy.
+
+What we have done, however, is identify the constraints:
+\begin{itemize}
+    \item There must be a notion of validity: which edge-additions are consistent with the rules, and which are not.
+    \item There must be a notion of branching: how the rules can produce more than one legal completion at a given vertex, and whether these completions can be enumerated.
+    \item There must be a notion of completion: a maximal set of consistent edge-additions, and a way of recording the observer's vertex in it.
+    \item If the theory is to be identified with general relativity in some limit, there must be a sense in which a Lorentzian manifold can be reconstructed from a sequence of lightlike graphs.
+\end{itemize}
+None of these constraints is, at this point, tight enough to determine a unique theory. But they are enough to mark out the space of candidate theories, and to argue that the space is non-empty.
+
+\section{Conclusion}
+
+The two Schr\"odinger equations and general relativity appear, at first sight, to be irreconcilable: the Schr\"odinger equations use time as an external parameter, general relativity binds time to geometry, and the two uses of the word do not coincide. The problem of wave-function collapse and the question of what an observer is are the residue of this mismatch, and they remain open in all conventional interpretations of quantum mechanics.
+
+We have argued that the mismatch is real but local: it is the mismatch between frames with finite proper time and the frame with vanishing proper time. The restriction to photon frames removes this difference. On the lightlike graph, both Schr\"odinger equations become statements about graph structure --- the time-independent one a constraint on edges, the time-dependent one a rule for extending the graph. Wave-function collapse becomes a branching between mutually exclusive completions of the graph. The observer becomes a vertex at which one completion is recorded. And general relativity's spacetime is replaced by a sequence of graphs whose relations we have not yet fully specified.
+
+The lightlike graph, in this paper as in the previous ones, is not the answer. It is the object on which the question can, at last, begin to be asked in a vocabulary in which photon frames are at home. Whether a unified theory of physics can be constructed on this object is a question for further work.
+
+\end{document}

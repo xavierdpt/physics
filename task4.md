@@ -1,0 +1,3 @@
+# Task
+
+We want to write a side LaTeX article to article1.tex, article2.tex and article3.tex about the claim that string theory is pseudo-science. We claim that lightlike graph theory can help in assessing whether these claims are true, false or in-between. In particular, if the formulations of string theory produce no new possibilitis of new knowledge or discovery when viewed in the lightlike graph theory, then it may very well be the case that string theory is a theory of uncessary complications that only create futile technical difficulties. Or it may be exactly the opposite, or something different.

@@ -1,0 +1,248 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{Source-Tagged Lightlike Graphs:\\
+When the Extra Bookkeeping Helps, and When It Doesn't}
+\input{author}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In the companion paper auditing string theory on the lightlike graph $\mathcal{G}$, we noted that the combinatorial content of string-theoretic dualities (and, conditionally, of compactifications) is visible on $\mathcal{G}$ only under one caveat: \emph{if one knows which photons were emitted by which source}. That caveat identified a piece of additional bookkeeping that lies outside the bare graph and that may, in several places, carry genuine combinatorial work. In this paper we give that bookkeeping a name, formalise it as a labelling of the lightlike graph, and audit its productivity in the same spirit as the previous paper. The bookkeeping is a labelling of edges by the source that emitted them (and, optionally, by the entangled pair to which they belong, by the object on which they were absorbed, and by the spacetime region in which they originated). We examine this labelling on the problems previously cast on $\mathcal{G}$ --- Bell's theorem, the measurement problem, the two-photon meeting, the black-hole information paradox, the sequence problem, and the T-duality situation --- and in each case ask whether the added labels do visible combinatorial work. The conclusion is mixed: the bookkeeping is genuinely productive when many photons share an emission or absorption vertex and disambiguation matters; it is unproductive (and possibly harmful) when the source is already identifiable from topology alone or when the photons are physically indistinguishable. The bookkeeping is best understood not as a universal extension of $\mathcal{G}$ but as an opt-in refinement, used where the bare graph is ambiguous.
+\end{abstract}
+
+\section{Introduction}
+
+In the series of companion papers we have argued that the only primitive the photon-frame restriction can take seriously is the lightlike relation between emission and absorption events. The lightlike graph $\mathcal{G} = (V, E)$ is the combinatorial residue: vertices are events, edges are null photon worldlines. We have used this object to recast Bell's theorem (article 2), the measurement problem (articles 2 and 3), the black-hole information paradox (article 2), the Schr\"odinger--spacetime mismatch (article 3), and the string-theory dispute (article 4). In each case the puzzle softened into a question about graph topology, and the restriction showed the underlying structure to be combinatorial rather than geometric.
+
+In article 4, the audit of string theory, two of the audit's verdicts rested on a caveat. The first was the verdict on dualities:
+\begin{quote}
+the productivity is observational only: the combinatorial structure is visible in the lightlike graph \emph{if one knows which photons were emitted by which source}, which is precisely the kind of bookkeeping additional data that lies outside the bare $\mathcal{G}$.
+\end{quote}
+The second was the verdict on compactifications:
+\begin{quote}
+A choice of compactification manifold does not produce a partition of $V$ distinguishable from any other choice of compactification manifold, unless additional data --- e.g., labels on the photon edges encoding the compactification radius --- is smuggled in\ldots
+\end{quote}
+In both cases the audit returned its verdicts conditional on the assumption that this additional bookkeeping was available---and in the case of compactifications, conditional on its being \emph{observable}.
+
+The bookkeeping was visible but unnamed. The purpose of the present paper is to give it a name, formalise it, examine when it is genuinely productive, and ask whether the diagnostics of articles 2--4 should be revised in its light. The preliminary finding is that the bookkeeping is not universally beneficial but is selectively so. Some problems the bare graph handled adequately, and the bookkeeping adds nothing; other problems were handled inadequately, and the bookkeeping is exactly what the resolution needs. We close with a criterion for when to opt in.
+
+\section{Part 1: The Tagged Lightlike Graph}
+
+\label{sec:tagged}
+
+\subsection{What the Bare Graph Already Records}
+
+Recall that, in $\mathcal{G} = (V, E)$:
+\begin{itemize}
+    \item Each vertex $v \in V$ is an emission or absorption event.
+    \item Each directed edge $(E_i, A_i) \in E$ is a photon worldline from the emission $E_i$ to the absorption $A_i$.
+    \item The source of the photon $p_i$ is, by stipulation, the vertex $E_i$: each photon has exactly one source vertex, the one at the tail of its edge.
+\end{itemize}
+The bare graph therefore already records one piece of source bookkeeping: which emission vertex a given photon came from. If two photons share an emission vertex, they share a source. If two photons converge on an absorption vertex, they share a sink. The bookkeeping is trivial at this level.
+
+The bookkeeping is non-trivial when we ask finer questions. Two photons may share an emission vertex \emph{but be distinct}: in the Bell set-up, both $p_1$ and $p_2$ are emitted at $S$, yet they are distinct photons with distinct destinations. The bare graph says only that they are two outgoing edges from $S$; it does not say which is which, nor does it say that the two photons are entangled.
+
+\begin{center}
+\begin{tabular}{c}
+$A_1 \leftarrow S \rightarrow A_2$ \\
+\end{tabular}
+\end{center}
+
+The bookkeeping we will add is a labelling that distinguishes $p_1$ from $p_2$ in such configurations, that makes explicit which photons are entangled, and that can record the physical object (source \emph{apparatus}, not just event) from which a photon originated.
+
+\subsection{Four Labellings}
+
+We introduce four labellings, each of which adds a different kind of source-related data to the bare graph. We will find in Part 2 that they are unequally productive.
+
+\paragraph{Labelling 1: Photon identity.} A map
+\[
+\iota : E \to \mathcal{I},
+\]
+where $\mathcal{I}$ is a set of photon identities. The image $\iota(p)$ is the unique tag of photon $p$. In the bare graph, no two edges are intrinsically distinguishable. With $\iota$, two edges are distinguishable if and only if they receive different tags. The photon-identity labelling is the most aggressive form of the bookkeeping: it treats every photon as a named individual.
+
+\paragraph{Labelling 2: Pair tagging.} A map
+\[
+\pi : E \to \mathcal{P} \cup \{\varnothing\},
+\]
+where $\mathcal{P}$ is a set of pair identities. Two photons share a tag $\pi(p) = \pi(p')$ iff they are members of the same entangled pair (or, more generally, the same correlated group). The pair tagging is weaker than identity tagging in that only photons within a pair need be distinguishable; it is stronger than the bare graph in that bare graph knows nothing of pairs.
+
+\paragraph{Labelling 3: Object-tagging.} A map
+\[
+\sigma : V \to \mathcal{O},
+\]
+where $\mathcal{O}$ is a set of physical objects (sources, sinks, mirrors, beam-splitters). The map $\sigma$ identifies each vertex with the physical object it occurs at. In the bare graph, vertices are abstract events; with $\sigma$, the events are tied to macroscopic apparatus. Note that $\sigma$ factors through $\eta$ (the source map already implicit in the bare graph) but adds more structure: a single physical source may have many emission events (vertices), and the object-tag groups them.
+
+\paragraph{Labelling 4: Region-tagging.} A map
+\[
+\rho : V \to \mathcal{R},
+\]
+where $\mathcal{R}$ is a set of spacetime regions (intervals of position, coordinate volumes, etc.). The region tag tracks \emph{where in spacetime} the event happened. In the bare graph, vertices are unlocated; with $\rho$, each vertex is associated with a region. Region-tagging is the bookkeeping implicitly invoked in the T-duality discussion of article~4: photons emitted from a small-circle of radius $R$ are tagged with the position on the circle, and the dual theory represents the same data tagged with a position on a small-circle of radius $\alpha'/R$.
+
+The four labellings are independent and can be combined. The augmented lightlike graph is
+\[
+\widehat{\mathcal{G}} \;=\; (V, E, \iota, \pi, \sigma, \rho),
+\]
+and a question of the form ``does adding this labelling do combinatorial work?'' can be asked for each of the four maps separately, or for any subset.
+
+\subsection{Auditing the Bookkeeping}
+
+The same audit criteria developed in article 4 carry over. For any labelling of $\widehat{\mathcal{G}}$, we ask:
+\begin{enumerate}
+    \item Does the labelling project onto a well-defined feature of $\mathcal{G}$ (i.e., is it expressible without smuggling back in coordinates, metric data, or frame-dependent vocabulary)?
+    \item Does the projected feature add combinatorial structure (degree multisets, partitionings, subgraphs) that would not be present in the bare graph?
+\end{enumerate}
+A \emph{yes-yes} verdict (labelling is projectable and productive) means the bookkeeping does combinatorial work. A \emph{yes-no} verdict (projectable but unproductive) means the bookkeeping adds notation without adding structure. A \emph{no-no} verdict (non-projectable) means the bookkeeping smuggles in vocabulary the restriction was supposed to discard.
+
+We will see in Part 2 that the verdicts vary labelling by labelling, and problem by problem. Some pair-taggings are productive in one problem and unproductive in another. The cleanest cases are those in which the bare graph is genuinely ambiguous and the labelling resolves the ambiguity, and the worst cases are those in which the bare graph is already unambiguous and the labelling is a renaming.
+
+\subsection{What the Audit Is Not}
+
+The audit is not an inquiry into whether labels are physically observable. Whether the photons of the universe actually \emph{carry} distinguishing marks in quiescent state is a question about empirical physics, not about bookkeeping. The bookkeeping is a tool for the combinatorician; whether it is a tool for the physicist depends on whether the labels have empirical teeth. We will return to this in Part~3, but the audit itself is purely about whether the bookkeeping is consistent with the photon-frame restriction and whether it does combinatorial work.
+
+\section{Part 2: The Bookkeeping on Five Problems}
+
+\label{sec:examples}
+
+\subsection{Bell's Theorem Revisited}
+
+The Bell experiment, as cast on the bare graph in article 2, has three vertices $\{S, A_1, A_2\}$ and two edges $\{p_1, p_2\}$. The argument was that the correlation between outcomes at $A_1$ and $A_2$ is a property of the common source vertex $S$, not a property of any spacelike region between $A_1$ and $A_2$.
+
+\paragraph{With photon-identity labelling.} The two edges $p_1$ and $p_2$ become distinguishable. The tagged graph carries the additional information: ``$p_1$ is the photon that was detected at $A_1$'' and ``$p_2$ is the photon that was detected at $A_2$''. This is not a causal claim --- the bare graph already encoded $p_1$ as the edge $(S, A_1)$ --- but it makes explicit the photon-at-a-time picture that the experimenters hold when they push buttons and record clicks. The bookkeeping is \emph{projectable} (no coordinates smuggled in) and \emph{moderately productive}: it expresses a fact that was implicit in the labelling of edges by their head vertex, but makes it available for further combinatorial manipulation. In Bell's theorem the bookkeeping adds clarity without changing the structure.
+
+\paragraph{With pair tagging.} The Bell experiment becomes a tagged graph with the pair label $\pi(p_1) = \pi(p_2) = \alpha$. The pair is then explicitly an object in the bookkeeping. This is more productive than identity labelling in the following sense: the bare graph cannot express the entanglement statement at all, because entanglement is a relation between photons that the bare graph does not track. The pair labelling adds genuine combinatorial structure: the equivalence relation ``$p$ and $p'$ belong to the same entangled pair'' partitions $E$ into a set of pairs (or singletons for unentangled photons). The audit returns \emph{yes-yes} on pair tagging for Bell's theorem. This is the principal pay-off of the bookkeeping in this example.
+
+\paragraph{Verdict.} Pair tagging is productive on Bell's theorem; identity tagging is cosmetic; region tagging and object tagging are unproductive in the standard Bell set-up because there is only one source and one pair of absorbers.
+
+\subsection{The Measurement Problem}
+
+The measurement problem, as cast on the bare graph in articles 2 and 3, has one emission vertex $E_p$ and two competing absorption vertices $C_1$ and $C_2$. The two completions $\mathcal{G}_1$ and $\mathcal{G}_2$ branch at the absorption.
+
+\paragraph{With photon-identity labelling.} The photon $p$ has an identity $\iota(p) = \beta$. The completion $\mathcal{G}_1$ says ``photon $\beta$ was absorbed at $C_1$''; $\mathcal{G}_2$ says ``photon $\beta$ was absorbed at $C_2$''. The bookkeeping sharpens the branching from a choice of edges to a choice of \emph{where the named photon went}. This is productive: the bare graph reads the branching as an abstract choice, the bookkeeping reads it as a choice about a particular photon.
+
+\paragraph{With pair tagging.} In the standard measurement set-up, no pair is involved. The pair-tag is $\pi(p) = \varnothing$, and the bookkeeping is inactive. The pair tagging does no work here.
+
+\paragraph{Verdict.} Identity tagging is productive in the measurement problem. It turns the abstract branching into a concrete disposition of a named object (the photon). This is, however, exactly the kind of sharpening that quantum mechanics would dispute: if the photon is genuinely in superposition, the question ``which named photon was absorbed at $C_1$?'' is precisely the question the superposition refuses to answer before measurement. The bookkeeping is productive in the direction of clarifying the branching, but its productivity presupposes that the photon is a named individual throughout. We will return to the presupposition in Part~3.
+
+\subsection{The Two-Photon Meeting}
+
+The two-photon problem (article 1) considers two objects $A$ and $B$ each emitting a photon towards the other at the same time. The two photons $p_{AB}$ and $p_{BA}$ meet at $M$, where they may interfere.
+
+\paragraph{With photon-identity labelling.} The bare graph has a single meeting vertex $M$ with two incoming edges (one from $A$, one from $B$) and two outgoing edges (one to $A$, one to $B$). The bare graph cannot distinguish $p_{AB}$ from $p_{BA}$ when they are both incoming at $M$: there is no combinatorial feature that says ``this edge came from $A$ rather than $B$'' beyond the tail vertex, which the bookkeeping in the bare graph does track (the tail of $p_{AB}$ is $A_e$, the tail of $p_{BA}$ is $B_e$). On a careful reading, the bare graph \emph{does} distinguish the two photons by their tail vertices. The identity labelling in this case is a renaming.
+
+What the bare graph does not do is record the superposition of the two photons at $M$. The meeting event $M$ is, on the bare graph, a vertex whose two in-edges correspond to two physical photons but whose combinatorial state does not encode interference. The bookkeeping that would encode interference is not photon-identity labelling but a labelling of $M$ itself (object tagging or a new vertex-state labelling). The audit returns \emph{yes-no} on identity tagging for the two-photon meeting: projectable, but not adding combinatorial structure.
+
+\paragraph{With object tagging.} The vertices $A_e$ and $B_e$ receive distinct object tags, as do $A_a$ and $B_a$ and $M$. The tagged graph now records that $M$ is a single physical meeting event with photons from two distinct sources. This is projectable but does not add combinatorial structure that the bare graph did not already encode in vertex identities.
+
+\paragraph{Verdict.} The two-photon meeting is a case where the bookkeeping is \emph{cosmetic}: the bare graph already tracks the sources via tail vertices, and the labellings add notation without adding structure. The interesting bookkeeping for this problem would have to be a new vertex labelling (to encode interference) or a different augmentation altogether.
+
+\subsection{The Black-Hole Information Paradox}
+
+The information paradox, as cast on the bare graph in article 2, becomes a question about the boundary capacity of the interior: is the subgraph $\partial \mathcal{G}_{\mathrm{int}}$ large enough to encode the interior's edges?
+
+\paragraph{With photon-identity labelling.} Consider a particle falling into the black hole. The infalling particle emits photons before crossing the horizon; these photons have identities. The Hawking radiation emitted later carries photons whose identities are unknown. The bookkeeping asks: \emph{do the outgoing photons preserve the identities of the infalling ones?} On the bare graph, identity is not preserved, because there is no label to preserve. With identity tagging, the question becomes precise: the bookkeeping partitions the outgoing edges into those that retain incoming identities and those that have lost theirs. The information paradox becomes the question of whether the partition is bijective.
+
+This is \emph{yes-yes}: the bookkeeping is projectable (identity is a labeling, not a metric) and it does combinatorial work (it converts a vague ``paradox'' into a precise partition question). The verdict is conditional on the identities being physically meaningful, which is precisely the conditional on which the original paradox depends.
+
+\paragraph{With region tagging.} A region label $\rho$ partitions $V$ by spacetime region (interior, exterior, horizon, infinity). The tagged graph now has a clear combinatorial partition that the bare graph cannot express: an edge with both endpoints in the interior is wholly interior; an edge with a tail in the interior and a head outside is forbidden by the horizon (it cannot exist); an edge with a tail on the horizon and a head outside is a Hawking photon. The region tagging does substantial work: the partition of $E$ by region-tag combinations is a combinatorial object the bare graph cannot match. \emph{Yes-yes} on region tagging for the information paradox.
+
+\paragraph{Verdict.} Both identity tagging and region tagging are productive on the information paradox. The bookkeeping is genuinely useful here.
+
+\subsection{The T-Duality Situation}
+
+In article 4, the audit of T-duality returned a \emph{yes-yes} verdict: the partitioning of $V$ into equivalence classes under circle identification is observable in photon-emission patterns. The verdict was conditional on knowing which photons were emitted by which source on the circle.
+
+\paragraph{With region tagging.} The region tag $\rho(p)$ records the position on the circle at which the photon was emitted. On a circle of radius $R$, two photons emitted at neighbouring positions are tagged with neighbouring region identifiers. The T-duality relates this tagging to a tagging on a circle of radius $\alpha'/R$; the partition of $V$ by region is preserved but the meaning of the partition changes. This is exactly the bookkeeping that the article-4 audit refers to.
+
+\paragraph{Verdict.} Region tagging is genuinely productive on the T-duality situation: without it, the partitioning of $V$ by the circle identification is invisible; with it, the partition is a feature of the tagged graph. This is the bookkeeping whose productivity was asserted conditionally in article 4 and is here confirmed.
+
+\subsection{Parallel Uncorrelated Streams}
+
+Consider two sources $S_1$ and $S_2$ producing streams of photons toward two distinct sinks $A$ and $B$ respectively. The streams do not interact.
+
+\paragraph{With object tagging.} The vertices are tagged with their physical objects. The edges are not: photons from $S_1$ are not individually tagged. The bare graph already records the partition of edges by source (tail vertex) and by sink (head vertex), so the bookkeeping adds no new combinatorial structure.
+
+\paragraph{Verdict.} The bookkeeping is \emph{unproductive} in this case. The bare graph already separates the two streams; the labelling is a renaming. This is the canonical case where the bookkeeping should not be invoked.
+
+\subsection{Summary of the Examples}
+
+The verdicts arrange themselves into a small table:
+\begin{center}
+\begin{tabular}{lcccc}
+                 & \textbf{Identity} & \textbf{Pair} & \textbf{Object} & \textbf{Region} \\ \hline
+Bell            & cosmetic & productive & unproductive & unproductive \\
+Measurement     & productive & inactive & cosmetic & unproductive \\
+Two photons     & cosmetic & inactive & cosmetic & unproductive \\
+Info.~paradox   & productive & inactive & cosmetic & productive \\
+T-duality       & inactive & inactive & inactive & productive \\
+Parallel streams & unproductive & inactive & unproductive & unproductive
+\end{tabular}
+\end{center}
+The productive entries (Bell/pair, Measurement/identity, Info.~paradox/identity, Info.~paradox/region, T-duality/region) are the cases in which the bookkeeping does visible combinatorial work and should be retained. The cosmetic and unproductive entries are cases in which the bookkeeping either renames what the bare graph already encodes or fails to add anything.
+
+\section{Part 3: Pros and Cons}
+
+\label{sec:conclusion}
+
+\subsection{When the Bookkeeping Helps}
+
+The bookkeeping is productive in three classes of situation:
+\begin{enumerate}
+    \item \textbf{Disambiguation of indistinguishable-looking edges.} When many photons share an emission or absorption vertex, the bare graph cannot tell them apart except by their head or tail. Pair tagging, in particular, makes explicit the entangled-pair structure that Bell-type correlations depend on. Without pair tagging, the Bell argument is forced to speak of an abstract branching at the source vertex; with pair tagging, the argument can speak of named pairs. This sharpens rather than changes the conclusion.
+    \item \textbf{Information-preservation questions.} The information paradox and the related Hawking-radiation questions become partition questions when the bookkeeping is added: do the outgoing photons preserve incoming identities? Without the bookkeeping, the question has no combinatorial formulation. With it, the question is precise.
+    \item \textbf{Region-sensitive structure.} T-duality, compactification, and any structure depending on which region of a compactified space a photon originated from are combinatorial once region tagging is added, and opaque without it. This was the verdict of article 4 on the dualities, now made explicit.
+\end{enumerate}
+In each of these cases, the bookkeeping does work that would have been impossible or vague on the bare graph. The bookkeeping is not a universal overhead; it is a targeted augmentation with specific pay-offs.
+
+\subsection{When the Bookkeeping Does Not Help}
+
+The bookkeeping is not productive in three classes of situation:
+\begin{enumerate}
+    \item \textbf{Cosmetic renaming.} When the bare graph already separates edges or vertices by their position, the labelling is a renaming. The two-photon meeting and the parallel-stream case fall here. The bookkeeping should not be invoked here; it adds notation without adding structure.
+    \item \textbf{Indiscriminate labelling of indistinguishable photons.} Bosonic photons in a coherent state are physically indistinguishable. Tagging them individually is a fiction. The bookkeeping cannot be physical in this case. Quantum-mechanically, an ``identity'' for a photon in an indeterminate state is precisely the kind of pre-measurement fact the theory refuses to settle.
+    \item \textbf{Frame-dependent smuggling-in.} If a label depends on a notion of source that requires a frame (e.g., coordinate-time ordering to determine which source emitted first), the labelling violates the photon-frame restriction. Some naive forms of region tagging, if applied naively to spacetime-volume regions with metric data, fall into this category. The audit must check that the labels are projectable onto a purely combinatorial feature.
+\end{enumerate}
+
+\subsection{A Criterion for Opting In}
+
+The auditing exercise of Part 2 suggests a simple criterion for whether to add a particular labelling:
+\begin{quote}
+\emph{A labelling is productive for a given problem iff the bare graph is ambiguous on the question the problem asks and the labelling resolves the ambiguity.}
+\end{quote}
+Concretely, ask whether the following are projectable:
+\begin{itemize}
+    \item Is there a set of edges that the bare graph treats as interchangeable but the problem distinguishes? If yes, an identity labelling is productive.
+    \item Is there a relation between edges that the bare graph does not encode but the problem requires? If yes, a pair labelling is productive.
+    \item Is there a spatial partitioning of vertices that the problem needs? If yes, a region labelling is productive.
+    \item Are there physical objects that the bare graph conflates (e.g., a beam-splitter that the bare graph presents as a single vertex but the experiment uses as two distinct apparatus elements)? If yes, an object labelling is productive.
+\end{itemize}
+If none of these questions has a yes, the bookkeeping should be omitted.
+
+\subsection{What the Bookkeeping Is Not}
+
+The bookkeeping discussed in this paper is \emph{combinatorial}. It is a labelling of vertices and edges of $\mathcal{G}$, not a frame-dependent, metric-dependent, or state-dependent addition to the underlying physics. This is a feature: the bookkeeping must not reintroduce the vocabulary the photon-frame restriction discarded. But it is also a limit: the bookkeeping cannot model what cannot be stated as a labelling of a graph. Questions of dynamics, of probability, of measurement outcomes all remain outside the combinatorics, and the bookkeeping does not pretend otherwise.
+
+The bookkeeping is also \emph{observational}, not \emph{intrinsic}. The labels are facts about how the experimenter chooses to carve up the corpus of photons, not facts that the photons carry intrinsically. Whether the labels are physically meaningful is a separate question. In a Bell experiment, the label ``pair $\alpha$'' corresponds to an entangled pair that the experimenter produces at the source; the label is real. In a thermal photon population, the label ``pair $\alpha$'' is a fiction produced by retro-fitting structure to an unstructured ensemble. The bookkeeping is the right tool only when the labels have empirical teeth.
+
+\subsection{Verdict}
+
+The bookkeeping considered in this paper is a useful extension of the lightlike graph in a specific, restricted set of cases. It is not a panacea: in many of the problems cast on the bare graph, the bookkeeping adds nothing. In the cases in which it does add something, the addition is targeted and quantifiable: a specific ambiguity is resolved by a specific labelling. The audit of string theory in article 4 should be revisited, but only in the cases in which the bookkeeping was assumed to be available. In those cases (dualities, compactifications, the boundary-capacity question), the bookkeeping is what makes the audit sharp, and the present paper confirms that the bookkeeping is indeed productive for the questions article 4 raised.
+
+The bookkeeping should not be incorporated as a default extension of $\mathcal{G}$. It is an opt-in refinement, used where the bare graph is empirically or conceptually ambiguous. In keeping with the spirit of the photon-frame restriction, the bookkeeping is a tool to be wielded with discrimination, not a universal patch.
+
+A natural next step is to extend the audit of article 4 to each row of the summary table in Part 2, checking whether the bookkeeping productive on a given string-theoretic phenomenon actually corresponds to a productive piece of the string-theoretic apparatus, or whether it is a renaming that the apparatus inherited from the underlying photon-frame setting. The bookkeeping is a sharpening tool: it tells us, with the same precision with which the bare graph told us about emission and absorption, which photons are whose.
+
+\section{Closing Remark}
+
+The lightlike graph is the combination of two austere moves: a frame restriction to photon observers, and the consequent rejection of all metric, coordinate, and proper-time data. The bookkeeping considered in this paper is the smallest, lightest additional data that recovers some of the questions the bare graph refuses to ask. It is sometimes productive, sometimes cosmetic, and occasionally deceptive. Used carefully, it sharpens the verdict of the previous audits; used carelessly, it reintroduces precisely the kind of frame-dependent vocabulary the photon-frame restriction sought to discard. The author's recommendation is to use it where it is productive, omit it where it is not, and check that, when used, it is projectable onto the bare graph without smuggling back in what the bare graph discarded.
+
+\end{document}
